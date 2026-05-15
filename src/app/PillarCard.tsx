@@ -57,7 +57,7 @@ const PillarCard = ({ label, desc, hasPattern, patternSide, bg, isDesktop, isAct
       )}
       <div style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
         <div style={{
-          fontFamily: "'Crimson Pro', serif", fontWeight: 600, fontSize: "18px",
+          fontFamily: "'Crimson Pro', serif", fontWeight: 600, fontSize: isDesktop ? "18px" : "12px",
           letterSpacing: "0.15em", color: "#f0ead6", textTransform: "uppercase",
           opacity: showTitle ? 1 : 0, transform: showTitle ? "translateY(0)" : "translateY(-10px)",
           transition: "all 0.3s ease", padding: "0 20px",
@@ -72,8 +72,7 @@ const PillarCard = ({ label, desc, hasPattern, patternSide, bg, isDesktop, isAct
           width: isDesktop ? "255px" : "120px", color: "#f0ead6", fontSize: "13px", lineHeight: "1.4",
           fontFamily: "'Work Sans', sans-serif", textAlign: "center",
           opacity: showDesc ? 1 : 0, transition: "opacity 0.3s ease",
-          pointerEvents: "none", whiteSpace: "normal", overflow: "hidden",
-          display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", maxHeight: showDesc ? "4.5em" : "0",
+          pointerEvents: "none", whiteSpace: "normal", overflow: "visible",
         }}>
           {desc}
         </div>
