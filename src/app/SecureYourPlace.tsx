@@ -20,7 +20,7 @@ export default function SecureYourPlace({
 }: SecureYourPlaceProps) {
   return (
     <main
-      className="min-h-screen w-full flex items-center justify-center px-6"
+      className="min-h-screen w-full flex items-center justify-center px-6 py-50"
       style={{ backgroundColor: "#332C0F" }}
     >
       <div className="w-full max-w-[760px]">

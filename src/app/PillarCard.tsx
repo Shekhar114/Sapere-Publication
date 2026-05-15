@@ -23,25 +23,21 @@ const pillars: PillarData[] = [
   { id: 1, label: "EDITORIAL", desc: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.", bg: "#6F7140", hasPattern: true, patternSide: "right" },
   { id: 2, label: "SIGNATURE\nEXPERIENCES", desc: "Designed to connect you with the right people. Not everything happens online.", bg: "#999678", hasPattern: false, patternSide: "none" },
   { id: 3, label: "COLLABORATIONS", desc: "Strategic partnerships that open the right doors. Chosen carefully.", bg: "#656643", hasPattern: true, patternSide: "right" },
-  { id: 4, label: "INCUBATOR", desc: "Supporting those building something worth watching.", bg: "#6F7140", hasPattern: true, patternSide: "left" },
+  { id: 4, label: " TALENT\nINCUBATOR", desc: "Supporting those building something worth watching.", bg: "#6F7140", hasPattern: true, patternSide: "left" },
   { id: 5, label: "MENTORSHIPS", desc: "Direct access to those who have built before you. Guidance where it actually matters.", bg: "#999678", hasPattern: false, patternSide: "none" },
   { id: 6, label: "PODCASTS", desc: "Conversations beyond the surface. What's usually not said, is explored here.", bg: "#656643", hasPattern: true, patternSide: "left" },
 ];
 
 const PillarCard = ({ label, desc, hasPattern, patternSide, bg, isDesktop, isActive, onSelect }: PillarCardProps & { isDesktop: boolean; isActive: boolean; onSelect: () => void; }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const showTitle = isHovered && !isActive && isDesktop;
-  const showDesc = isActive && (isDesktop ? isHovered : true);
+  const size = isDesktop ? 284 : 150;
+  const showTitle = !isActive;
+  const showDesc = isActive;
 
   return (
     <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onTouchStart={() => setIsHovered(true)}
-      onTouchEnd={() => setIsHovered(false)}
       onClick={onSelect}
       style={{
-        position: "relative", backgroundColor: bg, width: "284px", height: "221px",
+        position: "relative", backgroundColor: bg, width: `${size}px`, height: `${size}px`,
         overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center",
         transition: "all 0.4s ease", cursor: "pointer", borderRadius: "2px",
       }}
@@ -72,11 +68,12 @@ const PillarCard = ({ label, desc, hasPattern, patternSide, bg, isDesktop, isAct
         </div>
         <div style={{
           position: "absolute", top: "50%", left: "50%",
-          transform: showDesc ? "translate(-50%, -50%)" : "translate(-50%, -30%)",
-          width: "255px", color: "#f0ead6", fontSize: "13.5px", lineHeight: "1.6",
+          transform: "translate(-50%, -50%)",
+          width: isDesktop ? "255px" : "120px", color: "#f0ead6", fontSize: "13px", lineHeight: "1.4",
           fontFamily: "'Work Sans', sans-serif", textAlign: "center",
-          opacity: showDesc ? 1 : 0, transition: "all 0.3s ease",
-          pointerEvents: "none", whiteSpace: "normal",
+          opacity: showDesc ? 1 : 0, transition: "opacity 0.3s ease",
+          pointerEvents: "none", whiteSpace: "normal", overflow: "hidden",
+          display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", maxHeight: showDesc ? "4.5em" : "0",
         }}>
           {desc}
         </div>
@@ -149,7 +146,7 @@ export default function OurPillars() {
       style={{
         backgroundColor: "#332C0F",
         minHeight: "100vh",
-        padding: isMobile ? "60px 20px" : "80px 40px",
+        padding: isMobile ? "80px 20px 60px" : "80px 40px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -162,53 +159,56 @@ export default function OurPillars() {
           maxWidth: "900px",
           display: "flex",
           flexDirection: isMobile ? "column" : "row",
-          alignItems: isMobile ? "flex-start" : "center",
-          justifyContent: "space-between",
-          gap: isMobile ? "16px" : "0px",
-          marginBottom: "48px",
+          alignItems: isMobile ? "center" : "center",
+          justifyContent: isMobile ? "center" : "space-between",
+          gap: isMobile ? "0px" : "16px",
+          marginBottom: isMobile ? "32px" : "48px",
         }}
       >
         <h1
           style={{
             margin: 0,
-            fontSize: isMobile ? "48px" : "72px",
+            fontSize: isMobile ? "32px" : "72px",
             color: "#f0ead6",
             fontFamily: "'Crimson Pro', serif",
             lineHeight: 0.9,
+            textAlign: isMobile ? "center" : "left",
           }}
         >
           Our Pillars
         </h1>
-
-        <button
-          onClick={handleOpenSecureFlow}
-          style={{
-            padding: "12px 32px",
-            backgroundColor: "#f0ead6",
-            color: "#332C0F",
-            border: "none",
-            fontFamily: "'Crimson Pro', serif",
-            fontWeight: "bold",
-            fontSize: "16px",
-            cursor: "pointer",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            whiteSpace: "nowrap",
-            flexShrink: 0,
-          }}
-        >
-          Secure Your Place
-        </button>
+        {!isMobile && (
+          <button
+            onClick={handleOpenSecureFlow}
+            style={{
+              padding: "12px 32px",
+              backgroundColor: "#f0ead6",
+              color: "#332C0F",
+              border: "none",
+              fontFamily: "'Crimson Pro', serif",
+              fontWeight: "bold",
+              fontSize: "16px",
+              cursor: "pointer",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+            }}
+          >
+            Secure Your Place
+          </button>
+        )}
       </div>
 
       {/* Pillar Cards Grid */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 284px)",
-          gap: "24px",
+          gridTemplateColumns: isMobile ? "repeat(2, 150px)" : "repeat(3, 284px)",
+          gap: "16px",
           justifyContent: "center",
           width: "100%",
+          placeItems: "center",
         }}
       >
         {pillars.map((pillar) => (
@@ -222,7 +222,29 @@ export default function OurPillars() {
         ))}
       </div>
 
-      {/* Email Subscribe Row */}
+      {isMobile && (
+        <div style={{ width: "100%", maxWidth: "900px", display: "flex", justifyContent: "center", marginTop: "24px" }}>
+          <button
+            onClick={handleOpenSecureFlow}
+            style={{
+              padding: "12px 32px",
+              backgroundColor: "#f0ead6",
+              color: "#332C0F",
+              border: "none",
+              fontFamily: "'Crimson Pro', serif",
+              fontWeight: "bold",
+              fontSize: "16px",
+              cursor: "pointer",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+            }}
+          >
+            Secure Your Place
+          </button>
+        </div>
+      )}
       
     </section>
   );

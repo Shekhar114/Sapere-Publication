@@ -61,7 +61,7 @@ export default function App() {
         </div>
 
         {/* Email input + Submit */}
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex flex-col gap-2 w-full mt-5">
           <div
             className="flex items-center justify-between pb-2 w-full"
             style={{ borderBottom: "1px solid rgba(255,255,255,0.5)" }}

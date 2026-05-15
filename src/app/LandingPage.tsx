@@ -72,6 +72,7 @@ export default function LandingPage({ isLoggedIn }: LandingPageProps) {
                 <p>
                   Because building in luxury is different. <br />
                   And those who understand that, build differently. <br />
+                  <br />
                   To the future leaders of luxury!
                 </p>
               </div>
@@ -89,7 +90,7 @@ export default function LandingPage({ isLoggedIn }: LandingPageProps) {
         </div>
 
         {/* CTA Button */}
-        <div className="flex justify-center mt-12 md:mt-0.5">
+        <div className="flex justify-center mt-15  md:mt-0.5" style={{ marginTop: "40px" }}>
           <button
             type="button"
             onClick={handleExplore}
