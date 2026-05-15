@@ -77,13 +77,13 @@ export default function LandingPage({ isLoggedIn }: LandingPageProps) {
               </div>
 
               {/* Signature */}
-              <div className="flex justify-start md:justify-end pt-4">
+              {/* <div className="flex justify-start md:justify-end pt-4">
                 <img
                   src={signatureImg}
                   alt="Signature"
                   className="h-[50px] md:h-[65px] w-auto object-contain opacity-90"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
