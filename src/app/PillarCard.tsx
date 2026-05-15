@@ -29,13 +29,16 @@ const pillars: PillarData[] = [
 ];
 
 const PillarCard = ({ label, desc, hasPattern, patternSide, bg, isDesktop, isActive, onSelect }: PillarCardProps & { isDesktop: boolean; isActive: boolean; onSelect: () => void; }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const size = isDesktop ? 284 : 150;
-  const showTitle = !isActive;
-  const showDesc = isActive;
+  const showTitle = isDesktop ? !isHovered : !isActive;
+  const showDesc = isDesktop ? isHovered : isActive;
 
   return (
     <div
-      onClick={onSelect}
+      onMouseEnter={() => isDesktop && setIsHovered(true)}
+      onMouseLeave={() => isDesktop && setIsHovered(false)}
+      onClick={() => !isDesktop && onSelect()}
       style={{
         position: "relative", backgroundColor: bg, width: `${size}px`, height: `${size}px`,
         overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center",

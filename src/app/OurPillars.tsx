@@ -27,15 +27,16 @@ const pillars: PillarData[] = [
   { id: 6, label: "PODCASTS", desc: "Conversations beyond the surface. What's usually not said, is explored here.", bg: "#656643", hasPattern: true, patternSide: "left" },
 ];
 
-const PillarCard = ({ label, desc, hasPattern, patternSide, bg, isDesktop, isActive, onSelect, isHovered }: PillarCardProps & { isDesktop: boolean; isActive: boolean; onSelect: () => void; isHovered: boolean }) => {
-  const showTitle = !isDesktop || isHovered;
-  const showDesc = isHovered;
+const PillarCard = ({ label, desc, hasPattern, patternSide, bg, isDesktop, isActive, onSelect }: PillarCardProps & { isDesktop: boolean; isActive: boolean; onSelect: () => void; }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const showTitle = isDesktop ? !isHovered : !isActive;
+  const showDesc = isDesktop ? isHovered : isActive;
 
   return (
     <div
-      onMouseEnter={() => onSelect("hover")}
-      onMouseLeave={() => onSelect("leave")}
-      onClick={() => handleOpenSecureFlow()}
+      onMouseEnter={() => isDesktop && setIsHovered(true)}
+      onMouseLeave={() => isDesktop && setIsHovered(false)}
+      onClick={() => !isDesktop && onSelect()}
       style={{
         position: "relative", backgroundColor: bg, width: "284px", height: "221px",
         overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center",
@@ -84,7 +85,7 @@ const PillarCard = ({ label, desc, hasPattern, patternSide, bg, isDesktop, isAct
 export default function OurPillars() {
   const [showComingSoon, setShowComingSoon] = useState(false);
   const [showSecureFlow, setShowSecureFlow] = useState(false);
-  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+  const [activeCardId, setActiveCardId] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
