@@ -195,9 +195,9 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: "300",
   },
   subHeading: {
-    fontFamily: '"The Seasons", serif',
+    fontFamily: 'The Seasons',
     fontSize: "22px",
-    fontWeight: "400",
+    // fontWeight: "200",
     lineHeight: "1.4",
     letterSpacing: "0.15em",
     margin: "1rem 0 0 0",
@@ -216,6 +216,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: "700",
     letterSpacing: "0.4em",
     cursor: "pointer",
+    textDecoration : "underline",
   },
 };
 

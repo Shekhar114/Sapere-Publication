@@ -33,7 +33,7 @@ interface PillarColumnProps {
 
 const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
   const panelBg = pillar.isTextOnly ? "#ede9da" : "transparent";
-  const textColor = pillar.isTextOnly ? "#2b2912" : "#ede9da";
+  const textColor = pillar.isTextOnly ? "#797c4c" : "#ede9da";
 
   const getPadding = () => {
     if (isMobile) return "40px 20px";
@@ -71,6 +71,7 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
             backgroundPosition: "center",
             opacity: 0.5,
             zIndex: 1,
+           
           }}
         />
       )}
@@ -86,9 +87,10 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
       >
         <span
           style={{
-            fontFamily: "'Crimson Pro', serif",
+             fontFamily: "The Seasons",
+            fontWeight: 700,
             fontSize: "15px",
-            fontWeight: 400,
+          
             color: textColor,
             marginBottom: "6px",
             letterSpacing: "0.05em",
@@ -100,11 +102,13 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
         <h3
           style={{
             margin: 0,
-            fontFamily: "'Crimson Pro', serif",
-            fontWeight: 400,
+          
+            fontFamily: "The Seasons",
+            fontWeight: 700,
             fontSize: "14px",
             letterSpacing: "0.15em",
             color: textColor,
+            
             textTransform: "uppercase",
             lineHeight: 1.4,
             whiteSpace: "pre-wrap",
@@ -204,13 +208,16 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
             backgroundColor: "#ede9da",
             color: "#2b2912",
             border: "none",
-            fontFamily: "'Work Sans', sans-serif",
-            fontWeight: 600,
             fontSize: "12px",
+            fontWeight :"bold",
+            fontFamily: "'Akzidenz-Grotesk'",
+            
+            
             cursor: "pointer",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
             transition: "opacity 0.2s ease",
+            textDecoration : "underline",
             width: isMobile ? "auto" : "350px",
           }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.9")}

@@ -103,8 +103,9 @@ export default function App() {
                 border: "none",
                 borderRadius: "999px",
                 cursor: "pointer",
-                fontFamily: "Akzidenz-Grotesk",
-                fontWeight: 500,
+                // fontFamily: "The Seasons , Akzidenz-Grotesk",
+                fontFamily: "Work Sans , Akzidenz-Grotesk",
+                // fontWeight: 400,
                 letterSpacing: "0.22em",
                 whiteSpace: "nowrap",
               }}
@@ -135,7 +136,7 @@ export default function App() {
                 color: "#6f7140",
                 cursor: "pointer",
                 textDecoration: "underline",
-                fontFamily: "Akzidenz-Grotesk",
+                fontFamily: "Akzidenz-Grotesk,'The Seasons'",
                 letterSpacing: "0.05em",
               }}
             >
