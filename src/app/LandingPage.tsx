@@ -19,26 +19,58 @@ const LandingPage = ({ isLoggedIn }: LandingPageProps) => {
     <div style={styles.container}>
       <style>{`
         @media (max-width: 768px) {
+          /* Container padding adjust for mobile */
+          .landing-container {
+            padding: 10% 6% !important;
+          }
+
           .content-wrapper-layout {
             display: flex !important;
             flex-direction: column !important;
             /* Mobile par content left align rakhne ke liye */
             align-items: flex-start !important;
             text-align: left !important;
-            // margin-top: 20px !important;
+            gap: 1.8rem !important; /* Mobile par sections ke beech ka gap thoda kam kiya */
           }
+
           .logo-layout {
             position: static !important;
             /* Logo ko sabse niche bhejne ke liye */
             order: 99 !important; 
-            /* Button se gap kam karne ke liye margin ko 3rem se 1.5rem kiya */
-            // margin-top: 1.5rem !important;
+            margin-top: 2rem !important;
             margin-bottom: 0 !important;
             /* Logo ko mobile me left align rakhne ke liye */
             align-self: flex-start !important; 
+            width: 130px !important; /* Mobile standard size for logo */
+            height: auto !important;
           }
+
           .text-block-layout {
             align-items: flex-start !important;
+            gap: 1.2rem !important;
+          }
+
+          /* --- MOBILE FONT CHANGES --- */
+          .main-heading-responsive {
+            font-size: 36px !important; /* Large text scale down for mobile */
+            line-height: 1.3 !important;
+          }
+
+          .paragraph-responsive {
+            font-size: 15px !important; /* Readable small screen size */
+            line-height: 1.5 !important;
+          }
+
+          .sub-heading-responsive {
+            font-size: 18px !important;
+            letter-spacing: 0.12em !important;
+            margin-top: 0.5rem !important;
+          }
+
+          .button-responsive {
+            font-size: 12px !important;
+            padding: 10px 28px !important;
+            letter-spacing: 0.3em !important;
           }
         }
       `}</style>
@@ -54,35 +86,36 @@ const LandingPage = ({ isLoggedIn }: LandingPageProps) => {
           style={styles.logo} 
         />
 
-        <h1 style={styles.mainHeading}>
+        <h1 className="main-heading-responsive" style={styles.mainHeading}>
           LUXURY <br />
           FINALLY <br />
           UNDERSTOOD.
         </h1>
 
         <div className="text-block-layout" style={styles.textBlock}>
-          <p style={styles.paragraph}>
+          <p className="paragraph-responsive" style={styles.paragraph}>
             Luxury is often talked about, but rarely understood. <br />
             Sapēre was built for those creating in this industry, where access, structure, and relationships define what is possible.
           </p>
           
-          <p style={styles.paragraph}>
+          <p className="paragraph-responsive" style={styles.paragraph}>
             It brings together the elements required to build: insights, guidance, and real access, not as separate pieces, but as one system.
           </p>
 
-          <p style={styles.paragraph}>
+          <p className="paragraph-responsive" style={styles.paragraph}>
             Because building in luxury is different. <br />
             And those who understand that, build differently.
           </p>
         </div>
 
-        <h2 style={styles.subHeading}>
+        <h2 className="sub-heading-responsive" style={styles.subHeading}>
           TO THE FUTURE LEADERS <br />
           OF LUXURY!
         </h2>
 
         <div style={styles.btnContainer}>
           <button 
+            className="button-responsive"
             style={styles.button} 
             onClick={() => setShowPillars(true)}
           >

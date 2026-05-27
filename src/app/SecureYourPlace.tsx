@@ -42,25 +42,27 @@ export default function SecureYourPlace() {
 
   return (
     <div
-      className="min-h-screen w-full flex items-center justify-center px-6 md:px-16"
+      className="min-h-screen w-full flex items-center justify-center px-4 md:px-16"
       style={{
         backgroundColor: "#2e2912",
       }}
     >
       <div className="w-full max-w-[850px] flex flex-col items-center text-center">
-        <div className="mb-10 md:mb-14">
+        {/* Logo */}
+        <div className="mb-8 md:mb-14">
           <img
             src={imgLogo}
             alt="Sapere Crest"
-            className="w-[170px] md:w-[220px] h-auto object-contain"
+            className="w-[140px] md:w-[220px] h-auto object-contain"
           />
         </div>
 
+        {/* Heading */}
         <h1
-          className="text-[#f4f2ea] mb-24 md:mb-36"
+          className="text-[#f4f2ea] mb-16 md:mb-36 px-2 text-[20px] sm:text-[26px]"
           style={{
             fontFamily: "'The Seasons', 'Times New Roman', serif",
-            fontSize: "clamp(24px, 3.5vw, 36px)",
+            fontSize: "clamp(20px, 3.5vw, 36px)",
             lineHeight: "1.2",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
@@ -70,9 +72,11 @@ export default function SecureYourPlace() {
           Join the waitlist.
         </h1>
 
-        <div className="w-full px-4 md:px-12">
+        {/* FORM SECTION */}
+        <div className="w-full px-2 sm:px-4 md:px-12">
+          {/* Flex row with gap adjustments for small screens */}
           <div
-            className="w-full flex items-center justify-between gap-4 pb-2"
+            className="w-full flex flex-row items-center justify-between gap-2 sm:gap-4 pb-2"
             style={{
               borderBottom: "1.5px solid #f4f2ea",
             }}
@@ -83,11 +87,10 @@ export default function SecureYourPlace() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-              className="bg-transparent outline-none border-none text-left py-2 text-[#f4f2ea] w-full"
+              className="bg-transparent outline-none border-none text-left py-2 text-[#f4f2ea] flex-1 min-w-0 text-[14px] md:text-[17px]"
               style={{
                 fontFamily:
                   "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
-                fontSize: "17px",
                 letterSpacing: "0.02em",
                 WebkitTextFillColor: "#f4f2ea",
               }}
@@ -96,17 +99,15 @@ export default function SecureYourPlace() {
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
+              className="shrink-0 py-2.5 px-3 sm:px-7 transition-all duration-200 hover:opacity-90 active:scale-[0.98] text-[9px] sm:text-[11px]"
               style={{
                 backgroundColor: "#737046",
                 color: "#f4f2ea",
                 border: "none",
                 borderRadius: "999px",
-                padding: "10px 28px",
                 cursor: "pointer",
                 fontFamily:
                   "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
-                fontSize: "11px",
                 fontWeight: "500",
                 letterSpacing: "0.08em",
                 whiteSpace: "nowrap",
@@ -119,10 +120,9 @@ export default function SecureYourPlace() {
 
           {error && (
             <p
-              className="mt-3 text-left"
+              className="mt-3 text-left text-[12px] md:text-[13px]"
               style={{
                 color: "#ff6b6b",
-                fontSize: "13px",
                 fontFamily:
                   "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
               }}
