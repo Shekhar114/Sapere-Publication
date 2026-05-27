@@ -1,6 +1,6 @@
 import { useState } from "react";
 import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
-import Comingsoon from "./Comingsoon";
+import ComingSoon from "./ComingSoon";
 
 const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbxS9FxgrWwssXTt3kLzZphi91gnaH92a1iPopJudu3eCX5HfwhgpZRfsVHk4NrsY1Ml/exec";
@@ -38,18 +38,16 @@ export default function SecureYourPlace() {
     }
   };
 
-  if (submitted) return <Comingsoon />;
+  if (submitted) return <ComingSoon />;
 
   return (
     <div
       className="min-h-screen w-full flex items-center justify-center px-6 md:px-16"
       style={{
-        backgroundColor: "#2e2912", // Exact dark olive/bronze background color from image
+        backgroundColor: "#2e2912",
       }}
     >
       <div className="w-full max-w-[850px] flex flex-col items-center text-center">
-        
-        {/* Crest Logo */}
         <div className="mb-10 md:mb-14">
           <img
             src={imgLogo}
@@ -58,7 +56,6 @@ export default function SecureYourPlace() {
           />
         </div>
 
-        {/* Heading Text */}
         <h1
           className="text-[#f4f2ea] mb-24 md:mb-36"
           style={{
@@ -73,17 +70,13 @@ export default function SecureYourPlace() {
           Join the waitlist.
         </h1>
 
-        {/* Form Container */}
         <div className="w-full px-4 md:px-12">
-          
-          {/* Row layout for Input and Button */}
           <div
             className="w-full flex items-center justify-between gap-4 pb-2"
             style={{
-              borderBottom: "1.5px solid #f4f2ea", // Solid white/cream line matching the layout
+              borderBottom: "1.5px solid #f4f2ea",
             }}
           >
-            {/* Input Element */}
             <input
               type="email"
               placeholder="Enter email"
@@ -92,26 +85,27 @@ export default function SecureYourPlace() {
               onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
               className="bg-transparent outline-none border-none text-left py-2 text-[#f4f2ea] w-full"
               style={{
-                fontFamily: "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
+                fontFamily:
+                  "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
                 fontSize: "17px",
                 letterSpacing: "0.02em",
                 WebkitTextFillColor: "#f4f2ea",
               }}
             />
 
-            {/* Welcome Capsule Button */}
             <button
               onClick={handleSubmit}
               disabled={loading}
               className="transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
               style={{
-                backgroundColor: "#737046", // Exact matching muted olive green for button
+                backgroundColor: "#737046",
                 color: "#f4f2ea",
                 border: "none",
                 borderRadius: "999px",
                 padding: "10px 28px",
                 cursor: "pointer",
-                fontFamily: "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
+                fontFamily:
+                  "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
                 fontSize: "11px",
                 fontWeight: "500",
                 letterSpacing: "0.08em",
@@ -123,21 +117,20 @@ export default function SecureYourPlace() {
             </button>
           </div>
 
-          {/* Error Message rendering under the line */}
           {error && (
             <p
               className="mt-3 text-left"
               style={{
                 color: "#ff6b6b",
                 fontSize: "13px",
-                fontFamily: "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
+                fontFamily:
+                  "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
               }}
             >
               {error}
             </p>
           )}
         </div>
-
       </div>
     </div>
   );
