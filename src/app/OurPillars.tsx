@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import SecureYourPlace from "./SecureYourPlace";  
-import Comingsoon from "./Comingsoon"; 
+import SecureYourPlace from "../app/SecureYourPlace";  
+import Comingsoon from "../app/Comingsoon"; 
 import Image1 from "../assets/zoeImages/image1.png";
 import Image2 from "../assets/zoeImages/image2.png";
 import Image3 from "../assets/zoeImages/image3.png";
