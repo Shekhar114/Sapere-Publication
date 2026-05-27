@@ -14,15 +14,23 @@ export default function App() {
 
   const handleSubmit = async () => {
     if (!email.trim()) return;
+
     setLoading(true);
     setError("");
+
     try {
       await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), timestamp: new Date().toISOString() }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          timestamp: new Date().toISOString(),
+        }),
       });
+
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again.");
@@ -31,105 +39,127 @@ export default function App() {
     }
   };
 
-  // submitted → LandingPage with isLoggedIn=true  → OurPillars
-  // skipped   → LandingPage with isLoggedIn=false → Comingsoon (pillarsCard)
+  // Pass isLoggedIn status down to LandingPage
   if (submitted) return <LandingPage isLoggedIn={true} />;
-  if (skipped)   return <LandingPage isLoggedIn={false} />;
+  if (skipped) return <LandingPage isLoggedIn={false} />;
 
   return (
     <div
-      className="min-h-screen w-full flex items-center justify-center px-6"
-      style={{ backgroundColor: "#332c0f" }}
+      className="min-h-screen w-full flex items-center justify-center px-4 py-8 md:px-6"
+      style={{
+        backgroundColor: "#2e2a14",
+      }}
     >
-      <div className="flex flex-col items-center gap-8 w-full max-w-[595px]">
-        {/* Logo + Tagline */}
-        <div className="flex flex-col items-center w-full">
-          <div className="w-[280px] h-[260px] md:w-[302px] md:h-[281px] shrink-0">
-            <img src={imgLogo} alt="Sapere Logo" className="w-full h-full object-contain" />
-          </div>
-          <p
-            className="text-white text-center mt-2"
-            style={{
-              fontFamily: "'Crimson Pro', serif",
-              fontWeight: 500,
-              fontSize: "clamp(26px, 4vw, 36px)",
-              lineHeight: "1.3",
-            }}
-          >
-            Your inside view into the world of luxury
-          </p>
+      <div className="w-full max-w-[900px] flex flex-col items-center text-center">
+        {/* Logo */}
+        <div className="mb-10 md:mb-14">
+          <img
+            src={imgLogo}
+            alt="Sapere Logo"
+            className="w-[160px] md:w-[230px] object-contain"
+          />
         </div>
 
-        {/* Email input + Submit */}
-        <div className="flex flex-col gap-2 w-full mt-5">
+        {/* Heading */}
+        <h1
+          className="text-[#f5f3eb] mb-16 md:mb-28 px-2"
+          style={{
+            fontFamily: "The Seasons",
+            fontSize: "23.7px",
+            lineHeight: "1.4",
+            letterSpacing: "0.15em",
+          }}
+        >
+          Your inside view into the world of luxury.
+        </h1>
+
+        {/* FORM SECTION */}
+        <div className="w-full max-w-[720px] px-2 md:px-0">
+          {/* flex-row applied to keep it inline on both mobile and desktop */}
           <div
-            className="flex items-center justify-between pb-2 w-full"
-            style={{ borderBottom: "1px solid rgba(255,255,255,0.5)" }}
+            className="w-full flex flex-row items-center justify-between gap-3 md:gap-5 pb-2 md:pb-4"
+            style={{ borderBottom: "1px solid rgba(245,243,235,0.7)" }}
           >
             <input
               type="email"
+              placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-              placeholder="Enter email"
-              className="bg-transparent outline-none flex-1 text-white placeholder-white"
+              className="flex-1 bg-transparent outline-none border-none text-left py-2 text-[#f5f3eb]"
               style={{
-                fontFamily: "'Crimson Pro', serif",
+                fontFamily: "Akzidenz-Grotesk",
+                fontSize: "15px",
                 fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "75px",
-                minWidth: 0,
+                letterSpacing: "0.03em",
+                WebkitTextFillColor: "#f5f3eb",
               }}
             />
+
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="shrink-0 cursor-pointer transition-opacity hover:opacity-90 active:opacity-75 disabled:opacity-50"
+             
+              className="shrink-0 py-3 px-5 md:px-14 transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
               style={{
-                backgroundColor: "#92671d",
-                color: "#f5f3eb",
-                fontFamily: "'Work Sans', sans-serif",
-                fontWeight: 400,
-                fontSize: "clamp(11px, 2.5vw, 14px)",
-                lineHeight: "20px",
-                padding: "10px clamp(12px, 3vw, 32px)",
-                borderRadius: "59px",
+                backgroundColor: "#7d7a53",
+                color: "#ece8dd",
                 border: "none",
+                borderRadius: "999px",
+                cursor: "pointer",
+                fontFamily: "Akzidenz-Grotesk",
+                fontSize: "11px",
+                fontWeight: 500,
+                letterSpacing: "0.22em",
                 whiteSpace: "nowrap",
               }}
             >
-              {loading ? "Saving..." : "JOIN THE WAITLIST"}
+              {loading ? "SAVING..." : "JOIN THE WAITLIST"}
             </button>
           </div>
 
           {error && (
-            <p style={{ color: "#ff6b6b", fontFamily: "'Work Sans', sans-serif", fontSize: "13px" }}>
+            <p
+              className="mt-3 text-left"
+              style={{
+                color: "#ff6b6b",
+                fontSize: "12px",
+                fontFamily: "Akzidenz-Grotesk",
+              }}
+            >
               {error}
             </p>
           )}
 
-          <div
-            className="flex flex-col items-center text-center"
-            style={{ color: "#8e8871", lineHeight: "29.25px" }}
-          >
+          <div className="mt-6 md:mt-6 flex flex-col items-center">
             <button
               onClick={() => setSkipped(true)}
-              className="cursor-pointer hover:opacity-80 transition-opacity"
+              className="hover:text-white transition-colors duration-200"
               style={{
-                fontFamily: "'Work Sans', sans-serif",
-                fontWeight: 300,
-                fontSize: "14px",
-                textDecoration: "underline",
                 background: "none",
                 border: "none",
-                color: "#8e8871",
-                padding: 0,
+                color: "#6f7140",
+                cursor: "pointer",
+                textDecoration: "underline",
+                fontFamily: "Akzidenz-Grotesk",
+                fontSize: "16.1px",
+                letterSpacing: "0.05em",
               }}
             >
-              Skip
+              skip
             </button>
-            <p style={{ fontFamily: "'Work Sans', sans-serif", fontWeight: 500, fontSize: "15px" }}>
-              By subscribing, you agree to receive the Sapere newsletter. Unsubscribe anytime
+
+            <p
+              className="mt-6 md:mt-8 max-w-[560px] px-4 md:px-0 opacity-90"
+              style={{
+                color: "#f5f3eb",
+                fontFamily: "Akzidenz-Grotesk",
+                fontSize: "16.1px",
+                lineHeight: "1.7",
+                letterSpacing: "0.02em",
+              }}
+            >
+              By subscribing, you agree to receive the Sapere newsletter. Unsubscribe anytime.
             </p>
           </div>
         </div>

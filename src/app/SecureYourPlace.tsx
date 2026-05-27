@@ -1,102 +1,144 @@
-import { KeyboardEvent } from "react";
+import { useState } from "react";
 import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
+import Comingsoon from "./ComingSoon";
 
-interface SecureYourPlaceProps {
-  email: string;
-  onEmailChange: (value: string) => void;
-  onSubmit: () => void;
-  onCancel: () => void;
-  loading: boolean;
-  error: string;
-}
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxS9FxgrWwssXTt3kLzZphi91gnaH92a1iPopJudu3eCX5HfwhgpZRfsVHk4NrsY1Ml/exec";
 
-export default function SecureYourPlace({
-  email,
-  onEmailChange,
-  onSubmit,
-  onCancel,
-  loading,
-  error,
-}: SecureYourPlaceProps) {
+export default function SecureYourPlace() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async () => {
+    if (!email.trim()) return;
+
+    setLoading(true);
+    setError("");
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (submitted) return <Comingsoon />;
+
   return (
-    <main
-      className="min-h-screen w-full flex items-center justify-center px-6 py-50"
-      style={{ backgroundColor: "#332C0F" }}
+    <div
+      className="min-h-screen w-full flex items-center justify-center px-6 md:px-16"
+      style={{
+        backgroundColor: "#2e2912", // Exact dark olive/bronze background color from image
+      }}
     >
-      <div className="w-full max-w-[760px]">
-        <div className="flex flex-col items-center gap-10">
-          <div className="w-[280px] h-[260px] md:w-[302px] md:h-[281px] shrink-0">
-            <img
-              src={imgLogo}
-              alt="Sapere logo"
-              className="w-full h-full object-contain opacity-90"
-            />
-          </div>
+      <div className="w-full max-w-[850px] flex flex-col items-center text-center">
+        
+        {/* Crest Logo */}
+        <div className="mb-10 md:mb-14">
+          <img
+            src={imgLogo}
+            alt="Sapere Crest"
+            className="w-[170px] md:w-[220px] h-auto object-contain"
+          />
+        </div>
 
+        {/* Heading Text */}
+        <h1
+          className="text-[#f4f2ea] mb-24 md:mb-36"
+          style={{
+            fontFamily: "'The Seasons', 'Times New Roman', serif",
+            fontSize: "clamp(24px, 3.5vw, 36px)",
+            lineHeight: "1.2",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            fontWeight: "400",
+          }}
+        >
+          Join the waitlist.
+        </h1>
+
+        {/* Form Container */}
+        <div className="w-full px-4 md:px-12">
+          
+          {/* Row layout for Input and Button */}
           <div
+            className="w-full flex items-center justify-between gap-4 pb-2"
             style={{
-              width: "min(100%, 560px)",
-              display: "inline-flex",
-              padding: "14px 18px",
-              alignItems: "center",
-              gap: "14px",
-              borderBottom: "1px solid rgba(255,255,255,0.85)",
+              borderBottom: "1.5px solid #f4f2ea", // Solid white/cream line matching the layout
             }}
           >
+            {/* Input Element */}
             <input
-              id="secure-email"
               type="email"
-              value={email}
-              onChange={(e) => onEmailChange(e.target.value)}
-              onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
-                if (e.key === "Enter") onSubmit();
-                if (e.key === "Escape") onCancel();
-              }}
               placeholder="Enter email"
-              className="bg-transparent outline-none text-[#f0ead6]"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+              className="bg-transparent outline-none border-none text-left py-2 text-[#f4f2ea] w-full"
               style={{
-                flex: 1,
-                minWidth: 0,
-                fontFamily: "'Work Sans', sans-serif",
-                fontSize: "14px",
+                fontFamily: "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
+                fontSize: "17px",
                 letterSpacing: "0.02em",
-                padding: "10px 0",
+                WebkitTextFillColor: "#f4f2ea",
               }}
             />
+
+            {/* Welcome Capsule Button */}
             <button
-              type="button"
-              onClick={onSubmit}
+              onClick={handleSubmit}
               disabled={loading}
+              className="transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
               style={{
-                backgroundColor: "#92671d",
-                color: "#f5f3eb",
+                backgroundColor: "#737046", // Exact matching muted olive green for button
+                color: "#f4f2ea",
                 border: "none",
                 borderRadius: "999px",
-                padding: "12px 20px",
-                fontFamily: "'Work Sans', sans-serif",
-                fontWeight: 600,
-                fontSize: "13px",
-                cursor: loading ? "not-allowed" : "pointer",
+                padding: "10px 28px",
+                cursor: "pointer",
+                fontFamily: "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
+                fontSize: "11px",
+                fontWeight: "500",
+                letterSpacing: "0.08em",
                 whiteSpace: "nowrap",
+                textTransform: "uppercase",
               }}
             >
-              {loading ? "Saving..." : "JOIN THE WAITLIST"}
+              {loading ? "SAVING..." : "WELCOME TO SAPĒRE"}
             </button>
           </div>
 
+          {/* Error Message rendering under the line */}
           {error && (
             <p
+              className="mt-3 text-left"
               style={{
                 color: "#ff6b6b",
-                fontFamily: "'Work Sans', sans-serif",
                 fontSize: "13px",
+                fontFamily: "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
               }}
             >
               {error}
             </p>
           )}
         </div>
+
       </div>
-    </main>
+    </div>
   );
 }

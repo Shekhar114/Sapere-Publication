@@ -24,13 +24,12 @@ const Comingsoon: React.FC = () => {
           className="text-center font-medium tracking-wide px-6"
           style={{
             color: "#e8e0c8",
-            fontSize: "36px",
-            lineHeight: "75px",
-            fontFamily: "Crimson Pro",
+            fontSize: "19px",
+            fontFamily: "The Seasons",
             letterSpacing: "0.01em",
           }}
         >
-          Your place is set, we'll open the doors soon.
+          YOUR PLACE IS SET, WE'LL OPEN THE DOORS SOON.
         </p>
       </div>
     </div>

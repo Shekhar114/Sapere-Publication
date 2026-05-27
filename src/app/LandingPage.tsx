@@ -1,118 +1,189 @@
-// LandingPage.tsx
-import { useNavigate } from "react-router-dom";
-import landingImg from "../assets/landing.png";
-import signatureImg from "../assets/sign.png";
+import React, { useState } from "react";
+import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
+import OurPillars from "./OurPillars";
+import bgImage from "../assets/zoeImages/bg.png";
 
 interface LandingPageProps {
   isLoggedIn: boolean;
 }
 
-export default function LandingPage({ isLoggedIn }: LandingPageProps) {
-  const navigate = useNavigate();
+const LandingPage = ({ isLoggedIn }: LandingPageProps) => {
+  const [showPillars, setShowPillars] = useState(false);
 
-  const handleExplore = () => {
-    navigate(isLoggedIn ? "/pillars" : "/pillarsCard");
-  };
+  // Pass the login status down to the OurPillars component
+  if (showPillars) {
+    return <OurPillars isLoggedIn={isLoggedIn} />;
+  }
 
   return (
-    <main
-      className="min-h-screen w-full flex flex-col items-center justify-center px-4 md:px-16 py-12 md:py-0 overflow-hidden"
-      style={{ backgroundColor: "#332C0F" }}
-    >
-      <section className="w-full max-w-6xl px-2 md:px-0 flex flex-col justify-center">
-        <div className="flex flex-col md:flex-row md:items-start gap-10 lg:gap-20">
+    <div style={styles.container}>
+      <style>{`
+        @media (max-width: 768px) {
+          .content-wrapper-layout {
+            display: flex !important;
+            flex-direction: column !important;
+            /* Mobile par content left align rakhne ke liye */
+            align-items: flex-start !important;
+            text-align: left !important;
+            // margin-top: 20px !important;
+          }
+          .logo-layout {
+            position: static !important;
+            /* Logo ko sabse niche bhejne ke liye */
+            order: 99 !important; 
+            /* Button se gap kam karne ke liye margin ko 3rem se 1.5rem kiya */
+            // margin-top: 1.5rem !important;
+            margin-bottom: 0 !important;
+            /* Logo ko mobile me left align rakhne ke liye */
+            align-self: flex-start !important; 
+          }
+          .text-block-layout {
+            align-items: flex-start !important;
+          }
+        }
+      `}</style>
 
-          {/* Left: Image */}
-          <div className="w-full md:w-[45%] flex-shrink-0">
-            <div
-              className="relative w-full overflow-hidden flex items-start justify-center"
-              style={{ borderRadius: "24px", height: "clamp(350px, 65vh, 650px)" }}
-            >
-              <img
-                src={landingImg}
-                alt="Sapēre storefront"
-                className="w-full h-full object-cover md:object-contain transition-transform duration-700 hover:scale-105"
-                style={{ display: "block", objectPosition: "top" }}
-              />
-            </div>
-          </div>
+      <div style={styles.overlay} />
 
-          {/* Right: Text */}
-          <div className="w-full md:w-1/2 flex flex-col justify-start">
-            <h1
-              className="mb-6 md:mb-8 leading-tight"
-              style={{
-                fontFamily: "Crimson Pro, serif",
-                fontSize: "clamp(2.2rem, 3.5vw, 3.2rem)",
-                color: "#f0ead6",
-                lineHeight: "1.1",
-                marginTop: "0.2em",
-              }}
-            >
-              Luxury finally understood.
-            </h1>
+      <main className="content-wrapper-layout" style={styles.contentWrapper}>
+        {/* Logo component layout shifts to bottom and left-aligns on mobile */}
+        <img 
+          src={imgLogo} 
+          alt="Logo" 
+          className="logo-layout"
+          style={styles.logo} 
+        />
 
-            <div
-              className="space-y-4 md:space-y-5 text-sm md:text-[15px] leading-relaxed"
-              style={{ color: "#e8e0c8", letterSpacing: "0.01em", lineHeight: "1.6" }}
-            >
-              <div
-                className="font-semibold space-y-4"
-                style={{ fontSize: "clamp(0.9rem, 1.1vw, 1.05rem)", textAlign: "justify" }}
-              >
-                <p>Luxury is often talked about, but rarely understood.</p>
-                <p>
-                  Sapēre was built for those creating in this industry, where access, structure,
-                  and relationships define what is possible.
-                </p>
-                <p>
-                  It brings together the elements required to build: insights, guidance, and real
-                  access, not as separate pieces, but as one system.
-                </p>
-                <p>
-                  Because building in luxury is different. <br />
-                  And those who understand that, build differently. <br />
-                  <br />
-                  To the future leaders of luxury!
-                </p>
-              </div>
+        <h1 style={styles.mainHeading}>
+          LUXURY <br />
+          FINALLY <br />
+          UNDERSTOOD.
+        </h1>
 
-              {/* Signature */}
-              {/* <div className="flex justify-start md:justify-end pt-4">
-                <img
-                  src={signatureImg}
-                  alt="Signature"
-                  className="h-[50px] md:h-[65px] w-auto object-contain opacity-90"
-                />
-              </div> */}
-            </div>
-          </div>
+        <div className="text-block-layout" style={styles.textBlock}>
+          <p style={styles.paragraph}>
+            Luxury is often talked about, but rarely understood. <br />
+            Sapēre was built for those creating in this industry, where access, structure, and relationships define what is possible.
+          </p>
+          
+          <p style={styles.paragraph}>
+            It brings together the elements required to build: insights, guidance, and real access, not as separate pieces, but as one system.
+          </p>
+
+          <p style={styles.paragraph}>
+            Because building in luxury is different. <br />
+            And those who understand that, build differently.
+          </p>
         </div>
 
-        {/* CTA Button */}
-        <div className="flex justify-center mt-15  md:mt-0.5" style={{ marginTop: "40px" }}>
-          <button
-            type="button"
-            onClick={handleExplore}
-            className="px-12 py-4 text-[13px] font-semibold tracking-[0.2em] transition-all duration-300 font-work uppercase hover:shadow-lg"
-            style={{
-              backgroundColor: "#f0ead6",
-              color: "#332C0F",
-              border: "none",
-              cursor: "pointer",
-              borderRadius: "2px",
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d8d0b8")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#f0ead6")
-            }
+        <h2 style={styles.subHeading}>
+          TO THE FUTURE LEADERS <br />
+          OF LUXURY!
+        </h2>
+
+        <div style={styles.btnContainer}>
+          <button 
+            style={styles.button} 
+            onClick={() => setShowPillars(true)}
           >
-            Explore Pillars
+            EXPLORE PILLARS
           </button>
         </div>
-      </section>
-    </main>
+      </main>
+    </div>
   );
-}
+};
+
+const styles: Record<string, React.CSSProperties> = {
+  container: {
+    position: "relative",
+    minHeight: "100vh",
+    width: "100%",
+    backgroundColor: "#1a1813", 
+    backgroundImage: `url(${bgImage})`, 
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    color: "#EAE6DF", 
+    padding: "6% 8%",
+    boxSizing: "border-box",
+    overflowX: "hidden",
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(34, 31, 23, 0.75)", 
+    zIndex: 1,
+  },
+  contentWrapper: {
+    position: "relative",
+    zIndex: 2,
+    width: "100%",
+    margin: "0 auto",
+    display: "flex",
+    flexDirection: "column",
+    gap: "2.5rem",
+  },
+  logo: {
+    position: "absolute",
+    top: "0",
+    right: "0",
+    width: "175px",
+    height: "164px",
+    opacity: 0.85,
+  },
+  mainHeading: {
+    fontFamily: '"The Seasons", serif',
+    fontSize: "58px",
+    lineHeight: "1.4",
+    letterSpacing: "0.06em",
+    margin: 0,
+    color: "#EAE6DF",
+  },
+  textBlock: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1.5rem",
+    maxWidth: "900px",
+  },
+  paragraph: {
+    fontFamily: '"Akzidenz-Grotesk", sans-serif',
+    fontSize: "18px",
+    lineHeight: "1.6",
+    letterSpacing: "0.02em",
+    margin: 0,
+    opacity: 0.9,
+    fontWeight: "300",
+  },
+  subHeading: {
+    fontFamily: '"The Seasons", serif',
+    fontSize: "22px",
+    fontWeight: "400",
+    lineHeight: "1.4",
+    letterSpacing: "0.15em",
+    margin: "1rem 0 0 0",
+    color: "#D0C9BC",
+  },
+  btnContainer: {
+    marginTop: "0.5rem",
+  },
+  button: {
+    fontFamily: '"Akzidenz-Grotesk", sans-serif',
+    backgroundColor: "#EAE6DF",
+    color: "#1A1813",
+    border: "none",
+    padding: "12px 36px",
+    fontSize: "14.7px",
+    fontWeight: "700",
+    letterSpacing: "0.4em",
+    cursor: "pointer",
+  },
+};
+
+export default LandingPage;
