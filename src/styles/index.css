@@ -1,3 +1,21 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("/fonts/TheSeasons-Regular.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "Akzidenz-Grotesk";
+  src: url("/fonts/AkzidenzGrotesk-Regular.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-Regular.ttf")
+    format("truetype");
+}
