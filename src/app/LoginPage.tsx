@@ -104,7 +104,7 @@ export default function App() {
                 borderRadius: "999px",
                 cursor: "pointer",
                 // fontFamily: "The Seasons , Akzidenz-Grotesk",
-                fontFamily: "Work Sans , Akzidenz-Grotesk",
+                fontFamily: "Akzidenz-Grotesk,The Seasons",
                 // fontWeight: 400,
                 letterSpacing: "0.22em",
                 whiteSpace: "nowrap",

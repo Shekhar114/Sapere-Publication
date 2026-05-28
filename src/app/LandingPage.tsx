@@ -108,11 +108,15 @@ const LandingPage = ({ isLoggedIn }: LandingPageProps) => {
           </p>
         </div>
 
-        <h2 className="sub-heading-responsive" style={styles.subHeading}>
+        {/* <h2 className="sub-heading-responsive" style={styles.subHeading}>
           TO THE FUTURE LEADERS <br />
           OF LUXURY!
+        </h2> */}
+        <h2 className="sub-heading-responsive" style={styles.subHeading}>
+           TO THE FUTURE LEADERS <br />
+           OF LUXURY
+          <span style={{ fontFamily: "Akzidenz-Grotesk" }}>!</span>
         </h2>
-
         <div style={styles.btnContainer}>
           <button 
             className="button-responsive"
@@ -132,8 +136,8 @@ const styles: Record<string, React.CSSProperties> = {
     position: "relative",
     minHeight: "100vh",
     width: "100%",
-    backgroundColor: "#1a1813", 
     backgroundImage: `url(${bgImage})`, 
+    backgroundColor: "RGB(34, 31, 23,0.7)", 
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -188,7 +192,7 @@ const styles: Record<string, React.CSSProperties> = {
   paragraph: {
     fontFamily: '"Akzidenz-Grotesk", sans-serif',
     fontSize: "18px",
-    lineHeight: "1.6",
+    lineHeight: "1.17",
     letterSpacing: "0.02em",
     margin: 0,
     opacity: 0.9,
