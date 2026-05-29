@@ -16,13 +16,59 @@ interface PillarData {
 }
 
 const pillars: PillarData[] = [
-  { id: 1, numStr: "01.", label: "EDITORIAL", isTextOnly: false, vAlign: "top", image: Image1 },
-  { id: 2, numStr: "02.", label: "MENTORSHIPS", isTextOnly: true, vAlign: "bottom" },
-  { id: 3, numStr: "03.", label: "TALENT\nINCUBATOR", isTextOnly: false, vAlign: "top", image: Image3 },
-  { id: 4, numStr: "04.", label: "SIGNATURE\nEXPERIENCES", isTextOnly: true, vAlign: "bottom" },
-  { id: 5, numStr: "05.", label: "PARTNER\nNETWORK", isTextOnly: false, vAlign: "top", image: Image5 },
-  { id: 6, numStr: "06.", label: "PODCAST", isTextOnly: true, vAlign: "bottom" },
-  { id: 7, numStr: "07.", label: "MEMBERSHIPS", isTextOnly: false, vAlign: "top", image: Image7 },
+  {
+    id: 1,
+    numStr: "01.",
+    label: "EDITORIAL",
+    isTextOnly: false,
+    vAlign: "top",
+    image: Image1,
+  },
+  {
+    id: 2,
+    numStr: "02.",
+    label: "MENTORSHIPS",
+    isTextOnly: true,
+    vAlign: "bottom",
+  },
+  {
+    id: 3,
+    numStr: "03.",
+    label: "TALENT\nINCUBATOR",
+    isTextOnly: false,
+    vAlign: "top",
+    image: Image3,
+  },
+  {
+    id: 4,
+    numStr: "04.",
+    label: "SIGNATURE\nEXPERIENCES",
+    isTextOnly: true,
+    vAlign: "bottom",
+  },
+  {
+    id: 5,
+    numStr: "05.",
+    label: "PARTNER\nNETWORK",
+    isTextOnly: false,
+    vAlign: "top",
+    image: Image5,
+  },
+  {
+    id: 6,
+    numStr: "06.",
+    label: "PODCAST",
+    isTextOnly: true,
+    vAlign: "bottom",
+  },
+  {
+    id: 7,
+    numStr: "07.",
+    label: "MEMBERSHIPS",
+    isTextOnly: false,
+    vAlign: "top",
+    image: Image7,
+  },
 ];
 
 interface PillarColumnProps {
@@ -38,7 +84,9 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
 
   const getPadding = () => {
     if (isMobile) return "40px 20px";
-    return pillar.vAlign === "top" ? "100px 16px 40px 16px" : "40px 16px 140px 16px";
+    return pillar.vAlign === "top"
+      ? "100px 16px 40px 16px"
+      : "40px 16px 140px 16px";
   };
 
   const hoverTexts: Record<number, string> = {
@@ -71,8 +119,8 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
         justifyContent: isMobile
           ? "center"
           : pillar.vAlign === "top"
-          ? "flex-start"
-          : "flex-end",
+            ? "flex-start"
+            : "flex-end",
         textAlign: "center",
         padding: getPadding(),
         boxSizing: "border-box",
@@ -91,9 +139,10 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
             backgroundColor: "#201f0d",
             backgroundImage: `url(${pillar.image})`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            // backgroundPosition: "center",
             transform: isHovered ? "scale(1.08)" : "scale(1)",
-            transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease",
+            transition:
+              "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease",
             zIndex: 1,
           }}
         />
@@ -184,7 +233,9 @@ interface OurPillarsProps {
 }
 
 export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
-  const [nextStep, setNextStep] = useState<"secure" | "comingSoon" | null>(null);
+  const [nextStep, setNextStep] = useState<"secure" | "comingSoon" | null>(
+    null,
+  );
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -218,7 +269,13 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
         boxSizing: "border-box",
       }}
     >
-      <div style={{ textAlign: "center", width: "100%", marginBottom: isMobile ? "30px" : "0" }}>
+      <div
+        style={{
+          textAlign: "center",
+          width: "100%",
+          marginBottom: isMobile ? "30px" : "0",
+        }}
+      >
         <h2
           style={{
             margin: 0,
@@ -248,7 +305,7 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
           alignItems: "stretch",
         }}
       >
-        {pillars.map((pillar, index) => (
+        {pillars.map((pillar, index) =>
           isMobile ? (
             <PillarColumn key={pillar.id} pillar={pillar} isMobile={isMobile} />
           ) : (
@@ -256,19 +313,25 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
               key={pillar.id}
               style={{
                 flex: "1 1 0",
-                borderLeft: index !== 0
-                  ? "1px solid rgba(237, 233, 218, 0.15)"
-                  : "none",
+                borderLeft:
+                  index !== 0 ? "1px solid rgba(237, 233, 218, 0.15)" : "none",
                 display: "flex",
               }}
             >
               <PillarColumn pillar={pillar} isMobile={isMobile} />
             </div>
-          )
-        ))}
+          ),
+        )}
       </div>
 
-      <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: isMobile ? "30px" : "0" }}>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: isMobile ? "30px" : "0",
+        }}
+      >
         <button
           onClick={handleActionClick}
           style={{

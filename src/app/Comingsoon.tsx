@@ -1,5 +1,6 @@
 import React from "react";
 import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
+import theSeasons from "../assets/fonts/The Seasons/TheSeasons-Regular.ttf";
 
 const Comingsoon: React.FC = () => {
   return (
@@ -21,7 +22,7 @@ const Comingsoon: React.FC = () => {
         <p
           className="text-[#f4f2ea] px-2 text-[16px] md:text-[24.3939px]"
           style={{
-            fontFamily: "'Inter'",
+            fontFamily: `"${theSeasons}"`,
             lineHeight: "1.2",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
