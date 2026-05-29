@@ -5,6 +5,7 @@ import Image1 from "../assets/zoeImages/image1.png";
 import Image3 from "../assets/zoeImages/image3.png";
 import Image5 from "../assets/zoeImages/image5.png";
 import Image7 from "../assets/zoeImages/image7.png";
+import theSeasons from "../assets/fonts/The Seasons/TheSeasons-Regular.ttf";
 
 interface PillarData {
   id: number;
@@ -77,7 +78,7 @@ interface PillarColumnProps {
 }
 
 const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const panelBg = pillar.isTextOnly ? "#ede9da" : "transparent";
   const textColor = pillar.isTextOnly ? "#797c4c" : "#ede9da";
@@ -103,10 +104,18 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
     ? "rgba(121, 124, 76, 0.9)"
     : "rgba(237, 233, 218, 0.9)";
 
+  // Mouse Handlers for Desktop
+  const handleMouseEnter = () => !isMobile && setIsActive(true);
+  const handleMouseLeave = () => !isMobile && setIsActive(false);
+
+  // Click Handler for Mobile
+  const handleClick = () => isMobile && setIsActive(!isActive);
+
   return (
     <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
       style={{
         flex: isMobile ? "0 0 calc(50% - 10px)" : "1 1 0",
         width: isMobile ? "calc(50% - 10px)" : undefined,
@@ -139,8 +148,7 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
             backgroundColor: "#201f0d",
             backgroundImage: `url(${pillar.image})`,
             backgroundSize: "cover",
-            // backgroundPosition: "center",
-            transform: isHovered ? "scale(1.08)" : "scale(1)",
+            transform: isActive ? "scale(1.08)" : "scale(1)",
             transition:
               "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease",
             zIndex: 1,
@@ -148,7 +156,7 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
         />
       )}
 
-      {/* Number + Label — apni jagah pe fixed */}
+      {/* Number + Label — Shifts Up on Active/Hover */}
       <div
         style={{
           zIndex: 2,
@@ -156,6 +164,13 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          // Mobile mein zyada upar shift hoga (-100px) aur desktop par (-20px)
+          transform: isActive
+            ? isMobile
+              ? "translateY(-100px)"
+              : "translateY(-20px)"
+            : "translateY(0px)",
+          transition: "transform 0.4s ease",
         }}
       >
         <span
@@ -175,7 +190,7 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
         <h3
           style={{
             margin: 0,
-            fontFamily: "'The Seasons', 'Times New Roman', serif",
+            fontFamily: `"${theSeasons}"`,
             fontWeight: 400,
             fontSize: "14px",
             letterSpacing: "0.15em",
@@ -189,41 +204,38 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
         </h3>
       </div>
 
-      {/* ✅ Hover description — divider line REMOVE kar diya */}
-      {!isMobile && (
-        <div
+      {/* Hover description — Center aligned with 12px font */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 3,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center", // Sentence will show exactly in the center
+          padding: "20px",
+          opacity: isActive ? 1 : 0,
+          transform: isActive ? "translateY(0px)" : "translateY(15px)",
+          transition: "opacity 0.4s ease, transform 0.4s ease",
+          pointerEvents: "none", // Ensures it doesn't block click events
+        }}
+      >
+        <p
           style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 3,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "20px",
-            opacity: isHovered ? 1 : 0,
-            transform: isHovered ? "translateY(0px)" : "translateY(10px)",
-            transition: "opacity 0.4s ease, transform 0.4s ease",
-            pointerEvents: "none",
+            margin: 0,
+            fontFamily: `"${theSeasons}"`,
+            fontWeight: 400,
+            fontSize: "12px", // Updated to 12px
+            color: hoverDescColor,
+            lineHeight: 1.7,
+            textAlign: "center",
+            letterSpacing: "0.02em",
           }}
         >
-          {/* ✅ Divider line HATA DIYA */}
-          <p
-            style={{
-              margin: 0,
-              fontFamily: "'Crimson Pro', 'Georgia', serif",
-              fontWeight: 400,
-              fontSize: "12px",
-              color: hoverDescColor,
-              lineHeight: 1.7,
-              textAlign: "center",
-              letterSpacing: "0.02em",
-            }}
-          >
-            {hoverTexts[pillar.id]}
-          </p>
-        </div>
-      )}
+          {hoverTexts[pillar.id]}
+        </p>
+      </div>
     </div>
   );
 };
@@ -265,7 +277,8 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: isMobile ? "40px 20px" : "60px 0",
+        // Desktop ke liye 14px left/right margin add kiya gaya via padding
+        padding: isMobile ? "40px 20px" : "60px 14px",
         boxSizing: "border-box",
       }}
     >
@@ -281,7 +294,7 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
             margin: 0,
             fontSize: isMobile ? "28px" : "52px",
             color: "#ede9da",
-            fontFamily: "'Crimson Pro', serif",
+            fontFamily: `"${theSeasons}"`,
             fontWeight: 400,
             letterSpacing: "0.25em",
             textTransform: "uppercase",
@@ -341,7 +354,7 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
             border: "none",
             fontSize: "12px",
             fontWeight: "bold",
-            fontFamily: "'Akzidenz-Grotesk', sans-serif",
+            fontFamily: `"${theSeasons}"`,
             cursor: "pointer",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
