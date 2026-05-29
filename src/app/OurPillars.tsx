@@ -179,12 +179,9 @@ const PillarColumn = ({
           alignItems: "center",
           justifyContent: "center",
 
-          /* CHANGED: Moved h3/text further upwards on mobile click from -60px to -100px */
-          transform: isActive
-            ? isMobile
-              ? "translateY(-100px)"
-              : "translateY(-20px)"
-            : "translateY(0px)",
+          /* CHANGED: Text sticks perfectly on desktop, moves up only on mobile click */
+          transform:
+            isActive && isMobile ? "translateY(-100px)" : "translateY(0px)",
           transition: "transform 0.4s ease",
         }}
       >
