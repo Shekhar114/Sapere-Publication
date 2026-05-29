@@ -77,9 +77,14 @@ const pillars: PillarData[] = [
 interface PillarColumnProps {
   pillar: PillarData;
   isMobile: boolean;
+  isLastSingle?: boolean; // Added to handle single item width
 }
 
-const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
+const PillarColumn = ({
+  pillar,
+  isMobile,
+  isLastSingle,
+}: PillarColumnProps) => {
   const [isActive, setIsActive] = useState(false);
 
   const panelBg = pillar.isTextOnly ? "#ede9da" : "transparent";
@@ -126,7 +131,7 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
       style={{
-        width: "100%",
+        width: isLastSingle ? "calc(50% - 8px)" : "100%", // Keeps image ratio perfect, avoids stretching
         height: isMobile ? "300px" : "580px",
         position: "relative",
         backgroundColor: panelBg,
@@ -184,7 +189,8 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
       >
         <span
           style={{
-            fontFamily: `"${theSeasons}"`,
+            // fontFamily: `"${theSeasons}"`,
+            fontFamily: '"The Seasons", serif',
             fontWeight: 600,
             fontSize: isMobile ? "16px" : "16.9px",
             color: textColor,
@@ -234,7 +240,8 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
         <p
           style={{
             margin: 0,
-            fontFamily: `"${theSeasons}"`,
+            // fontFamily: `"${theSeasons}"`,
+            fontFamily: '"The Seasons", serif',
             fontWeight: 400,
             fontSize: "12px",
             color: hoverDescColor,
@@ -335,22 +342,36 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
           alignItems: "stretch",
         }}
       >
-        {pillars.map((pillar, index) => (
-          <div
-            key={pillar.id}
-            style={{
-              borderLeft:
-                !isMobile && index !== 0
-                  ? "1px solid rgba(237, 233, 218, 0.15)"
-                  : "none",
-              display: "flex",
-              width: "100%",
-              minWidth: 0,
-            }}
-          >
-            <PillarColumn pillar={pillar} isMobile={isMobile} />
-          </div>
-        ))}
+        {pillars.map((pillar, index) => {
+          // Check if this is the last single item on mobile (7th item)
+          const isLastSingle =
+            isMobile &&
+            index === pillars.length - 1 &&
+            pillars.length % 2 !== 0;
+
+          return (
+            <div
+              key={pillar.id}
+              style={{
+                borderLeft:
+                  !isMobile && index !== 0
+                    ? "1px solid rgba(237, 233, 218, 0.15)"
+                    : "none",
+                display: "flex",
+                width: "100%",
+                minWidth: 0,
+                gridColumn: isLastSingle ? "1 / -1" : "auto", // Spans full width on mobile grid to allow centering
+                justifyContent: isLastSingle ? "center" : "stretch", // Centers the single card
+              }}
+            >
+              <PillarColumn
+                pillar={pillar}
+                isMobile={isMobile}
+                isLastSingle={isLastSingle}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* BUTTON */}

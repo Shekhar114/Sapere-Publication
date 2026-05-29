@@ -22,7 +22,8 @@ const Comingsoon: React.FC = () => {
         <p
           className="text-[#f4f2ea] px-2"
           style={{
-            fontFamily: `"${theSeasons}"`,
+            // fontFamily: `"${theSeasons}"`,
+            fontFamily: '"The Seasons", serif',
             fontSize: "clamp(20px, 3.5vw, 36px)",
             lineHeight: "1.2",
             letterSpacing: "0.18em",
