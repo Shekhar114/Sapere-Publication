@@ -20,9 +20,10 @@ const Comingsoon: React.FC = () => {
 
         {/* Message — same text sizing as SecureYourPlace heading */}
         <p
-          className="text-[#f4f2ea] px-2 text-[16px] md:text-[24.3939px]"
+          className="text-[#f4f2ea] px-2"
           style={{
             fontFamily: `"${theSeasons}"`,
+            fontSize: "clamp(20px, 3.5vw, 36px)",
             lineHeight: "1.2",
             letterSpacing: "0.18em",
             textTransform: "uppercase",

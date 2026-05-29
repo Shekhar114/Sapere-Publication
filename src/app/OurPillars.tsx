@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import SecureYourPlace from "../app/SecureYourPlace";
 import Comingsoon from "../app/Comingsoon";
+
 import Image1 from "../assets/zoeImages/image1.png";
 import Image3 from "../assets/zoeImages/image3.png";
 import Image5 from "../assets/zoeImages/image5.png";
 import Image7 from "../assets/zoeImages/image7.png";
+
 import theSeasons from "../assets/fonts/The Seasons/TheSeasons-Regular.ttf";
 
 interface PillarData {
@@ -81,10 +83,30 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
   const [isActive, setIsActive] = useState(false);
 
   const panelBg = pillar.isTextOnly ? "#ede9da" : "transparent";
+
   const textColor = pillar.isTextOnly ? "#797c4c" : "#ede9da";
 
   const getPadding = () => {
-    if (isMobile) return "40px 20px";
+    /*
+    ==========================================
+    MOBILE VIEW -> SAME AS OLD DESIGN
+    ==========================================
+    */
+
+    if (isMobile) {
+      return "40px 20px";
+    }
+
+    /*
+    ==========================================
+    CUSTOM PADDING ONLY FOR 04 CARD
+    ==========================================
+    */
+
+    if (pillar.id === 4) {
+      return "40px 16px 120px";
+    }
+
     return pillar.vAlign === "top"
       ? "100px 16px 40px 16px"
       : "40px 16px 140px 16px";
@@ -92,11 +114,17 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
 
   const hoverTexts: Record<number, string> = {
     1: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
+
     2: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
+
     3: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
+
     4: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
+
     5: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
+
     6: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
+
     7: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
   };
 
@@ -104,11 +132,12 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
     ? "rgba(121, 124, 76, 0.9)"
     : "rgba(237, 233, 218, 0.9)";
 
-  // Mouse Handlers for Desktop
+  // Desktop Hover
   const handleMouseEnter = () => !isMobile && setIsActive(true);
+
   const handleMouseLeave = () => !isMobile && setIsActive(false);
 
-  // Click Handler for Mobile
+  // Mobile Click
   const handleClick = () => isMobile && setIsActive(!isActive);
 
   return (
@@ -117,70 +146,136 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
       style={{
+        /*
+        ==========================================
+        MOBILE VIEW FIXED LIKE OLD VERSION
+        ==========================================
+        */
+
         flex: isMobile ? "0 0 calc(50% - 10px)" : "1 1 0",
+
         width: isMobile ? "calc(50% - 10px)" : undefined,
+
         height: isMobile ? "300px" : "580px",
+
         position: "relative",
+
         backgroundColor: panelBg,
+
         display: "flex",
+
         flexDirection: "column",
+
         alignItems: "center",
+
         justifyContent: isMobile
           ? "center"
           : pillar.vAlign === "top"
             ? "flex-start"
             : "flex-end",
+
         textAlign: "center",
+
         padding: getPadding(),
+
         boxSizing: "border-box",
+
         overflow: "hidden",
+
         borderRight: isMobile ? "1px solid rgba(237, 233, 218, 0.15)" : "none",
+
         borderBottom: isMobile ? "1px solid rgba(237, 233, 218, 0.15)" : "none",
+
         cursor: "pointer",
       }}
     >
-      {/* Background image with zoom */}
+      {/* ================================= */}
+      {/* BACKGROUND IMAGE */}
+      {/* ================================= */}
+
       {!pillar.isTextOnly && (
         <div
           style={{
             position: "absolute",
+
             inset: 0,
+
             backgroundColor: "#201f0d",
+
             backgroundImage: `url(${pillar.image})`,
-            backgroundSize: "cover",
+
+            /*
+            ==========================================
+            PARTNER NETWORK IMAGE FIX
+            ==========================================
+            */
+
+            backgroundSize: pillar.id === 5 ? "110% 110%" : "cover",
+
+            backgroundPosition: "center",
+
+            backgroundRepeat: "no-repeat",
+
+            width: "100%",
+
+            height: "100%",
+
             transform: isActive ? "scale(1.08)" : "scale(1)",
-            transition:
-              "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease",
+
+            transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+
             zIndex: 1,
           }}
         />
       )}
 
-      {/* Number + Label — Shifts Up on Active/Hover */}
+      {/* ================================= */}
+      {/* NUMBER + TITLE */}
+      {/* ================================= */}
+
       <div
         style={{
           zIndex: 2,
+
           display: "flex",
+
           flexDirection: "column",
+
           alignItems: "center",
+
           justifyContent: "center",
-          // Mobile mein zyada upar shift hoga (-100px) aur desktop par (-20px)
+
           transform: isActive
             ? isMobile
               ? "translateY(-100px)"
               : "translateY(-20px)"
             : "translateY(0px)",
+
           transition: "transform 0.4s ease",
         }}
       >
         <span
           style={{
-            fontWeight: 400,
-            fontSize: "15px",
+            fontFamily: `"${theSeasons}"`,
+
+            fontWeight: 600,
+
+            /*
+            ==========================================
+            OLD MOBILE FONT RESTORED
+            ==========================================
+            */
+
+            fontSize: isMobile ? "15px" : "16.9px",
+
             color: textColor,
-            marginBottom: "8px",
+
+            // marginBottom: "8px",
+
             letterSpacing: "0.05em",
+
             display: "inline-block",
+
             fontVariantNumeric: "lining-nums",
           }}
         >
@@ -190,13 +285,27 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
         <h3
           style={{
             margin: 0,
+
             fontFamily: `"${theSeasons}"`,
-            fontWeight: 400,
-            fontSize: "14px",
+
+            fontWeight: 600,
+
+            /*
+            ==========================================
+            OLD MOBILE H3 SIZE RESTORED
+            ==========================================
+            */
+
+            fontSize: isMobile ? "14px" : "14px",
+
             letterSpacing: "0.15em",
+
             color: textColor,
+
             textTransform: "uppercase",
+
             lineHeight: 1.4,
+
             whiteSpace: "pre-wrap",
           }}
         >
@@ -204,32 +313,65 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
         </h3>
       </div>
 
-      {/* Hover description — Center aligned with 12px font */}
+      {/* ================================= */}
+      {/* HOVER DESCRIPTION */}
+      {/* ================================= */}
+
       <div
         style={{
           position: "absolute",
+
           inset: 0,
+
           zIndex: 3,
+
           display: "flex",
+
           flexDirection: "column",
+
           alignItems: "center",
-          justifyContent: "center", // Sentence will show exactly in the center
+
+          justifyContent: "center",
+
+          /*
+          ==========================================
+          OLD MOBILE PADDING RESTORED
+          ==========================================
+          */
+
           padding: "20px",
+
           opacity: isActive ? 1 : 0,
+
           transform: isActive ? "translateY(0px)" : "translateY(15px)",
+
           transition: "opacity 0.4s ease, transform 0.4s ease",
-          pointerEvents: "none", // Ensures it doesn't block click events
+
+          pointerEvents: "none",
         }}
       >
         <p
           style={{
             margin: 0,
+
             fontFamily: `"${theSeasons}"`,
+
             fontWeight: 400,
-            fontSize: "12px", // Updated to 12px
+
+            /*
+            ==========================================
+            OLD MOBILE DESCRIPTION SIZE RESTORED
+            ==========================================
+            */
+
+            fontSize: isMobile ? "12px" : "12px",
+
             color: hoverDescColor,
+
             lineHeight: 1.7,
+
             textAlign: "center",
+
             letterSpacing: "0.02em",
           }}
         >
@@ -248,12 +390,22 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
   const [nextStep, setNextStep] = useState<"secure" | "comingSoon" | null>(
     null,
   );
+
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    /*
+    ==========================================
+    OLD MOBILE BREAKPOINT RESTORED
+    ==========================================
+    */
+
     const checkMobile = () => setIsMobile(window.innerWidth <= 1024);
+
     checkMobile();
+
     window.addEventListener("resize", checkMobile);
+
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
@@ -265,38 +417,73 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
     }
   };
 
-  if (nextStep === "secure") return <SecureYourPlace />;
-  if (nextStep === "comingSoon") return <Comingsoon />;
+  if (nextStep === "secure") {
+    return <SecureYourPlace />;
+  }
+
+  if (nextStep === "comingSoon") {
+    return <Comingsoon />;
+  }
 
   return (
     <section
       style={{
         backgroundColor: "#2b2912",
+
         minHeight: "100vh",
+
         display: "flex",
+
         flexDirection: "column",
+
         justifyContent: "space-between",
+
         alignItems: "center",
-        // Desktop ke liye 14px left/right margin add kiya gaya via padding
-        padding: isMobile ? "40px 20px" : "60px 14px",
+
+        /*
+        ==========================================
+        OLD MOBILE SECTION PADDING RESTORED
+        ==========================================
+        */
+
+        padding: isMobile ? "40px 20px" : "60px 48px",
+
         boxSizing: "border-box",
       }}
     >
+      {/* ================================= */}
+      {/* TITLE */}
+      {/* ================================= */}
+
       <div
         style={{
           textAlign: "center",
+
           width: "100%",
+
           marginBottom: isMobile ? "30px" : "0",
         }}
       >
         <h2
           style={{
             margin: 0,
+
+            /*
+            ==========================================
+            OLD MOBILE TITLE SIZE RESTORED
+            ==========================================
+            */
+
             fontSize: isMobile ? "28px" : "52px",
+
             color: "#ede9da",
+
             fontFamily: `"${theSeasons}"`,
+
             fontWeight: 400,
-            letterSpacing: "0.25em",
+
+            letterSpacing: isMobile ? "0.25em" : "0.25em",
+
             textTransform: "uppercase",
           }}
         >
@@ -304,17 +491,36 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
         </h2>
       </div>
 
+      {/* ================================= */}
+      {/* PILLARS */}
+      {/* ================================= */}
+
       <div
         style={{
           display: "flex",
+
           flexDirection: "row",
+
           flexWrap: isMobile ? "wrap" : "nowrap",
+
           width: "100%",
+
           margin: "auto",
+
           boxSizing: "border-box",
+
+          /*
+          ==========================================
+          OLD MOBILE GAP RESTORED
+          ==========================================
+          */
+
           gap: isMobile ? "20px" : "10px",
+
           padding: isMobile ? "0" : "20px 0",
+
           justifyContent: isMobile ? "center" : "stretch",
+
           alignItems: "stretch",
         }}
       >
@@ -326,8 +532,10 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
               key={pillar.id}
               style={{
                 flex: "1 1 0",
+
                 borderLeft:
                   index !== 0 ? "1px solid rgba(237, 233, 218, 0.15)" : "none",
+
                 display: "flex",
               }}
             >
@@ -337,11 +545,18 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
         )}
       </div>
 
+      {/* ================================= */}
+      {/* BUTTON */}
+      {/* ================================= */}
+
       <div
         style={{
           width: "100%",
+
           display: "flex",
+
           justifyContent: "center",
+
           marginTop: isMobile ? "30px" : "0",
         }}
       >
@@ -349,17 +564,35 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
           onClick={handleActionClick}
           style={{
             padding: "12px 44px",
+
             backgroundColor: "#ede9da",
+
             color: "#2b2912",
+
             border: "none",
+
             fontSize: "12px",
+
             fontWeight: "bold",
+
             fontFamily: `"${theSeasons}"`,
+
             cursor: "pointer",
+
             textTransform: "uppercase",
+
             letterSpacing: "0.18em",
+
             transition: "opacity 0.2s ease",
+
             textDecoration: "underline",
+
+            /*
+            ==========================================
+            OLD MOBILE BUTTON RESTORED
+            ==========================================
+            */
+
             width: isMobile ? "auto" : "350px",
           }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.9")}
