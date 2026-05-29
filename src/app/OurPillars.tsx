@@ -101,12 +101,12 @@ const PillarColumn = ({ pillar, isMobile }: PillarColumnProps) => {
 
   const hoverTexts: Record<number, string> = {
     1: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
-    2: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
-    3: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
-    4: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
-    5: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
-    6: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
-    7: "Where luxury is broken down beyond the surface. Clarity on how the industry actually works.",
+    2: "Direct access to those who have built before you. Guidance where it actually matters.",
+    3: "Supporting those building something worth watching.",
+    4: "Designed to connect you with the right people. Not everything happens online.",
+    5: "Strategic partnerships that open the right doors. Chosen carefully.",
+    6: "Conversations beyond the surface. What's usually not said, is explored here.",
+    7: "Guidance, access, and the right people, for every stage of your journey.",
   };
 
   const hoverDescColor = pillar.isTextOnly
