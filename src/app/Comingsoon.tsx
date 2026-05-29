@@ -4,32 +4,33 @@ import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
 const Comingsoon: React.FC = () => {
   return (
     <div
-      className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden"
-      style={{ backgroundColor: "#332C0F" }}
+      className="min-h-screen w-full flex items-center justify-center px-4 md:px-16"
+      style={{ backgroundColor: "#2e2912" }}
     >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 55% 50% at 50% 45%, rgba(255,245,200,0.06) 0%, transparent 70%)",
-        }}
-      />
-      <div className="relative z-10 flex flex-col items-center gap-14">
-        <img
-          src={imgLogo}
-          alt="Crest Logo"
-          className="w-[220px] h-auto object-contain opacity-90"
-        />
+      <div className="w-full max-w-[850px] flex flex-col items-center text-center">
+        {/* Logo — same size as SecureYourPlace */}
+        <div className="mb-8 md:mb-14">
+          <img
+            src={imgLogo}
+            alt="Sapere Crest"
+            className="w-[140px] md:w-[220px] h-auto object-contain"
+          />
+        </div>
+
+        {/* Message — same text sizing as SecureYourPlace heading */}
         <p
-          className="text-center font-medium tracking-wide px-6"
+          className="text-[#f4f2ea] px-2"
           style={{
-            color: "#e8e0c8",
-            fontSize: "19px",
-            fontFamily: "The Seasons",
-            letterSpacing: "0.01em",
+            fontFamily: "'Inter'",
+            fontSize: "24.3939px",
+            lineHeight: "1.2",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            fontWeight: "400",
+            margin: 0,
           }}
         >
-          YOUR PLACE IS SET, WE'LL OPEN THE DOORS SOON.
+          Your place is set, we&#39;ll open the doors soon.
         </p>
       </div>
     </div>

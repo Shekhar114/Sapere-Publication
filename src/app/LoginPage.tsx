@@ -152,7 +152,7 @@ export default function App() {
                 letterSpacing: "0.02em",
               }}
             >
-              By subscribing, you agree to receive the Sapere newsletter. Unsubscribe anytime.
+              By subscribing, you agree to receive the Sapēre newsletter. Unsubscribe anytime.
             </p>
           </div>
         </div>

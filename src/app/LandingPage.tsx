@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
-import OurPillars from "./OurPillars";
+import  OurPillars  from "./OurPillars";
 import bgImage from "../assets/zoeImages/bg.png";
 
 interface LandingPageProps {
@@ -165,7 +165,7 @@ const styles: Record<string, React.CSSProperties> = {
     margin: "0 auto",
     display: "flex",
     flexDirection: "column",
-    gap: "2.5rem",
+    gap: "1.8rem",
   },
   logo: {
     position: "absolute",
@@ -177,9 +177,9 @@ const styles: Record<string, React.CSSProperties> = {
   },
   mainHeading: {
     fontFamily: '"The Seasons", serif',
-    fontSize: "58px",
+    fontSize: "54.26px",
     lineHeight: "1.4",
-    letterSpacing: "0.06em",
+    letterSpacing: "0.09em",
     margin: 0,
     color: "#EAE6DF",
   },
@@ -187,11 +187,11 @@ const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     gap: "1.5rem",
-    maxWidth: "900px",
+    maxWidth: "880px",
   },
   paragraph: {
     fontFamily: '"Akzidenz-Grotesk", sans-serif',
-    fontSize: "18px",
+    fontSize: "17.7289px",
     lineHeight: "1.17",
     letterSpacing: "0.02em",
     margin: 0,
@@ -200,7 +200,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   subHeading: {
     fontFamily: 'The Seasons',
-    fontSize: "22px",
+    fontSize: "21.328px",
     // fontWeight: "200",
     lineHeight: "1.4",
     letterSpacing: "0.15em",
@@ -216,9 +216,9 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#1A1813",
     border: "none",
     padding: "12px 36px",
-    fontSize: "14.7px",
+    fontSize: "13.9965px",
     fontWeight: "700",
-    letterSpacing: "0.4em",
+    letterSpacing: "8.79px",
     cursor: "pointer",
     textDecoration : "underline",
   },
