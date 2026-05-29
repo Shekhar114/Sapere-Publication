@@ -77,12 +77,14 @@ const pillars: PillarData[] = [
 interface PillarColumnProps {
   pillar: PillarData;
   isMobile: boolean;
-  isLastSingle?: boolean; // Added to handle single item width
+  isSmallDesktop: boolean;
+  isLastSingle?: boolean;
 }
 
 const PillarColumn = ({
   pillar,
   isMobile,
+  isSmallDesktop,
   isLastSingle,
 }: PillarColumnProps) => {
   const [isActive, setIsActive] = useState(false);
@@ -92,7 +94,16 @@ const PillarColumn = ({
 
   const getPadding = () => {
     if (isMobile) {
-      return "20px"; // Clean, uniform padding for centered mobile look
+      return "20px";
+    }
+
+    if (isSmallDesktop) {
+      if (pillar.id === 4) {
+        return "30px 12px 80px";
+      }
+      return pillar.vAlign === "top"
+        ? "65px 12px 30px 12px"
+        : "30px 12px 95px 12px";
     }
 
     if (pillar.id === 4) {
@@ -118,11 +129,8 @@ const PillarColumn = ({
     ? "rgba(121, 124, 76, 0.9)"
     : "rgba(237, 233, 218, 0.9)";
 
-  // Desktop Hover
   const handleMouseEnter = () => !isMobile && setIsActive(true);
   const handleMouseLeave = () => !isMobile && setIsActive(false);
-
-  // Mobile Click
   const handleClick = () => isMobile && setIsActive(!isActive);
 
   return (
@@ -131,8 +139,8 @@ const PillarColumn = ({
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
       style={{
-        width: isLastSingle ? "calc(50% - 8px)" : "100%", // Keeps image ratio perfect, avoids stretching
-        height: isMobile ? "300px" : "580px",
+        width: isLastSingle ? "calc(50% - 8px)" : "100%",
+        height: isMobile ? "300px" : "100%", // Fixed: Hardcoded 580px removed to dynamically scale
         position: "relative",
         backgroundColor: panelBg,
         display: "flex",
@@ -159,7 +167,7 @@ const PillarColumn = ({
             backgroundColor: "#201f0d",
             backgroundImage: `url(${pillar.image})`,
             backgroundSize: pillar.id === 5 ? "110% 110%" : "cover",
-            // backgroundPosition: "center",
+            backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             width: "100%",
             height: "100%",
@@ -178,8 +186,6 @@ const PillarColumn = ({
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-
-          /* CHANGED: Text sticks perfectly on desktop, moves up only on mobile click */
           transform:
             isActive && isMobile ? "translateY(-100px)" : "translateY(0px)",
           transition: "transform 0.4s ease",
@@ -187,10 +193,9 @@ const PillarColumn = ({
       >
         <span
           style={{
-            // fontFamily: `"${theSeasons}"`,
             fontFamily: '"The Seasons", serif',
             fontWeight: 600,
-            fontSize: isMobile ? "16px" : "16.9px",
+            fontSize: isMobile ? "16px" : isSmallDesktop ? "13px" : "16.9px",
             color: textColor,
             letterSpacing: "0.05em",
             display: "inline-block",
@@ -204,10 +209,9 @@ const PillarColumn = ({
         <h3
           style={{
             margin: 0,
-
             fontFamily: '"The Seasons", serif',
             fontWeight: 600,
-            fontSize: isMobile ? "15px" : "14px",
+            fontSize: isMobile ? "15px" : isSmallDesktop ? "12px" : "14px",
             letterSpacing: "0.15em",
             color: textColor,
             textTransform: "uppercase",
@@ -239,10 +243,9 @@ const PillarColumn = ({
         <p
           style={{
             margin: 0,
-            // fontFamily: `"${theSeasons}"`,
             fontFamily: '"The Seasons", serif',
             fontWeight: 400,
-            fontSize: "12px",
+            fontSize: isSmallDesktop ? "11px" : "12px",
             color: hoverDescColor,
             lineHeight: 1.7,
             textAlign: "center",
@@ -265,12 +268,18 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
     null,
   );
   const [isMobile, setIsMobile] = useState(false);
+  const [isSmallDesktop, setIsSmallDesktop] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 1024);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 1024);
+      setIsSmallDesktop(width > 1024 && width <= 1366);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleActionClick = () => {
@@ -296,12 +305,17 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
         maxWidth: "100vw",
         overflowX: "hidden",
         backgroundColor: "#2b2912",
-        minHeight: "100vh",
+        height: isMobile ? "auto" : "100vh", // Fixed: Forces strict full height on desktop views
+        minHeight: isMobile ? "100vh" : "auto",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: isMobile ? "40px 16px" : "60px 48px",
+        padding: isMobile
+          ? "40px 16px"
+          : isSmallDesktop
+            ? "24px 32px"
+            : "60px 48px",
         boxSizing: "border-box",
       }}
     >
@@ -316,9 +330,8 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
         <h2
           style={{
             margin: 0,
-            fontSize: isMobile ? "28px" : "52px",
+            fontSize: isMobile ? "28px" : isSmallDesktop ? "36px" : "52px",
             color: "#ede9da",
-            // fontFamily: `"${theSeasons}"`,
             fontFamily: '"The Seasons", serif',
             fontWeight: 400,
             letterSpacing: "0.25em",
@@ -338,12 +351,12 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
           margin: "0 auto",
           boxSizing: "border-box",
           gap: isMobile ? "16px" : "10px",
-          padding: isMobile ? "10px 0" : "40px 0",
+          padding: isMobile ? "10px 0" : isSmallDesktop ? "15px 0" : "40px 0",
           alignItems: "stretch",
+          flex: isMobile ? "none" : 1, // Fixed: Takes exactly the remaining vertical area smoothly
         }}
       >
         {pillars.map((pillar, index) => {
-          // Check if this is the last single item on mobile (7th item)
           const isLastSingle =
             isMobile &&
             index === pillars.length - 1 &&
@@ -360,13 +373,15 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
                 display: "flex",
                 width: "100%",
                 minWidth: 0,
-                gridColumn: isLastSingle ? "1 / -1" : "auto", // Spans full width on mobile grid to allow centering
-                justifyContent: isLastSingle ? "center" : "stretch", // Centers the single card
+                gridColumn: isLastSingle ? "1 / -1" : "auto",
+                justifyContent: isLastSingle ? "center" : "stretch",
+                height: isMobile ? "auto" : "100%", // Fixed: Inherits full grid row height on desktop
               }}
             >
               <PillarColumn
                 pillar={pillar}
                 isMobile={isMobile}
+                isSmallDesktop={isSmallDesktop}
                 isLastSingle={isLastSingle}
               />
             </div>
@@ -380,7 +395,7 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          marginTop: isMobile ? "20px" : "20px",
+          marginTop: "20px",
         }}
       >
         <button
@@ -392,7 +407,7 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
             border: "none",
             fontSize: "12px",
             fontWeight: "bold",
-            fontFamily: `"${theSeasons}"`,
+            fontFamily: '"The Seasons", serif',
             cursor: "pointer",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
