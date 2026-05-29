@@ -19,10 +19,9 @@ const Comingsoon: React.FC = () => {
 
         {/* Message — same text sizing as SecureYourPlace heading */}
         <p
-          className="text-[#f4f2ea] px-2"
+          className="text-[#f4f2ea] px-2 text-[16px] md:text-[24.3939px]"
           style={{
             fontFamily: "'Inter'",
-            fontSize: "24.3939px",
             lineHeight: "1.2",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
