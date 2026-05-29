@@ -178,6 +178,7 @@ const PillarColumn = ({
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          fontFamily: '"The Seasons", serif',
           /* CHANGED: Moved h3/text further upwards on mobile click from -60px to -100px */
           transform: isActive
             ? isMobile

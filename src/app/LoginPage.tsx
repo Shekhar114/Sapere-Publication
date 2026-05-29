@@ -148,7 +148,7 @@ export default function App() {
               className="mt-6 md:mt-8 max-w-[560px] px-2 md:px-0 opacity-90 text-[13px] md:text-[16.1px]"
               style={{
                 color: "#f5f3eb",
-                fontFamily: '"Akzidenz-Grotesk"serif',
+                fontFamily: '"Akzidenz-Grotesk", serif',
 
                 lineHeight: "1.7",
                 letterSpacing: "0.02em",
