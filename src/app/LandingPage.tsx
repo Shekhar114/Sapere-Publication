@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
-import  OurPillars  from "./OurPillars";
+import OurPillars from "./OurPillars";
 import bgImage from "../assets/zoeImages/bg.png";
 
 interface LandingPageProps {
@@ -79,11 +79,11 @@ const LandingPage = ({ isLoggedIn }: LandingPageProps) => {
 
       <main className="content-wrapper-layout" style={styles.contentWrapper}>
         {/* Logo component layout shifts to bottom and left-aligns on mobile */}
-        <img 
-          src={imgLogo} 
-          alt="Logo" 
+        <img
+          src={imgLogo}
+          alt="Logo"
           className="logo-layout"
-          style={styles.logo} 
+          style={styles.logo}
         />
 
         <h1 className="main-heading-responsive" style={styles.mainHeading}>
@@ -95,11 +95,14 @@ const LandingPage = ({ isLoggedIn }: LandingPageProps) => {
         <div className="text-block-layout" style={styles.textBlock}>
           <p className="paragraph-responsive" style={styles.paragraph}>
             Luxury is often talked about, but rarely understood. <br />
-            Sapēre was built for those creating in this industry, where access, structure, and relationships define what is possible.
+            Sapēre was built for those creating in this industry, where access,
+            structure, and relationships define what is possible.
           </p>
-          
+
           <p className="paragraph-responsive" style={styles.paragraph}>
-            It brings together the elements required to build: insights, guidance, and real access, not as separate pieces, but as one system.
+            It brings together the elements required to build: insights,
+            guidance, and real access, not as separate pieces, but as one
+            system.
           </p>
 
           <p className="paragraph-responsive" style={styles.paragraph}>
@@ -113,14 +116,14 @@ const LandingPage = ({ isLoggedIn }: LandingPageProps) => {
           OF LUXURY!
         </h2> */}
         <h2 className="sub-heading-responsive" style={styles.subHeading}>
-           TO THE FUTURE LEADERS <br />
-           OF LUXURY
+          TO THE FUTURE LEADERS <br />
+          OF LUXURY
           <span style={{ fontFamily: "Akzidenz-Grotesk" }}>!</span>
         </h2>
         <div style={styles.btnContainer}>
-          <button 
+          <button
             className="button-responsive"
-            style={styles.button} 
+            style={styles.button}
             onClick={() => setShowPillars(true)}
           >
             EXPLORE PILLARS
@@ -136,15 +139,15 @@ const styles: Record<string, React.CSSProperties> = {
     position: "relative",
     minHeight: "100vh",
     width: "100%",
-    backgroundImage: `url(${bgImage})`, 
-    backgroundColor: "RGB(34, 31, 23,0.7)", 
+    backgroundImage: `url(${bgImage})`,
+    backgroundColor: "RGB(34, 31, 23,0.7)",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    color: "#EAE6DF", 
+    color: "#EAE6DF",
     padding: "6% 8%",
     boxSizing: "border-box",
     overflowX: "hidden",
@@ -155,7 +158,7 @@ const styles: Record<string, React.CSSProperties> = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(34, 31, 23, 0.75)", 
+    backgroundColor: "rgba(34, 31, 23, 0.75)",
     zIndex: 1,
   },
   contentWrapper: {
@@ -199,7 +202,8 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: "300",
   },
   subHeading: {
-    fontFamily: 'The Seasons',
+    // fontFamily: 'The Seasons',
+    fontFamily: '"The Seasons", serif',
     fontSize: "21.328px",
     // fontWeight: "200",
     lineHeight: "1.4",
@@ -220,7 +224,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: "700",
     letterSpacing: "8.79px",
     cursor: "pointer",
-    textDecoration : "underline",
+    textDecoration: "underline",
   },
 };
 
