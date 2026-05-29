@@ -63,7 +63,8 @@ export default function App() {
         <h1
           className="text-[#f5f3eb] mb-12 md:mb-28 px-2 text-[18px] sm:text-[20px] md:text-[23.7px]"
           style={{
-            fontFamily: "The Seasons",
+            // fontFamily: "The Seasons",
+            fontFamily: '"The Seasons", serif',
             lineHeight: "1.4",
             letterSpacing: "0.15em",
           }}
@@ -152,7 +153,8 @@ export default function App() {
                 letterSpacing: "0.02em",
               }}
             >
-              By subscribing, you agree to receive the Sapēre newsletter. Unsubscribe anytime.
+              By subscribing, you agree to receive the Sapēre newsletter.
+              Unsubscribe anytime.
             </p>
           </div>
         </div>
