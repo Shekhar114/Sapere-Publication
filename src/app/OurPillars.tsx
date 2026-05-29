@@ -330,7 +330,7 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
           width: "100%",
           margin: "0 auto",
           boxSizing: "border-box",
-          gap: isMobile ? "16px" : "0px",
+          gap: isMobile ? "16px" : "10px",
           padding: isMobile ? "10px 0" : "40px 0",
           alignItems: "stretch",
         }}
