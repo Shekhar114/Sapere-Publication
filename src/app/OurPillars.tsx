@@ -159,7 +159,7 @@ const PillarColumn = ({
             backgroundColor: "#201f0d",
             backgroundImage: `url(${pillar.image})`,
             backgroundSize: pillar.id === 5 ? "110% 110%" : "cover",
-            backgroundPosition: "center",
+            // backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             width: "100%",
             height: "100%",
