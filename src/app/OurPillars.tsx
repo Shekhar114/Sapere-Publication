@@ -178,7 +178,7 @@ const PillarColumn = ({
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: '"The Seasons", serif',
+
           /* CHANGED: Moved h3/text further upwards on mobile click from -60px to -100px */
           transform: isActive
             ? isMobile
@@ -207,7 +207,8 @@ const PillarColumn = ({
         <h3
           style={{
             margin: 0,
-            fontFamily: `"${theSeasons}"`,
+
+            fontFamily: '"The Seasons", serif',
             fontWeight: 600,
             fontSize: isMobile ? "15px" : "14px",
             letterSpacing: "0.15em",
@@ -320,7 +321,8 @@ export default function OurPillars({ isLoggedIn }: OurPillarsProps) {
             margin: 0,
             fontSize: isMobile ? "28px" : "52px",
             color: "#ede9da",
-            fontFamily: `"${theSeasons}"`,
+            // fontFamily: `"${theSeasons}"`,
+            fontFamily: '"The Seasons", serif',
             fontWeight: 400,
             letterSpacing: "0.25em",
             textTransform: "uppercase",
