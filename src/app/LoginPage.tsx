@@ -49,21 +49,43 @@ export default function App() {
         backgroundColor: "#2e2a14",
       }}
     >
+      {/* Self-contained style block for the luxury glimmer effect */}
+      <style>{`
+        @keyframes luxuryGlimmer {
+          0% { transform: translateX(-200%) skewX(-30deg); }
+          15% { transform: translateX(200%) skewX(-30deg); }
+          100% { transform: translateX(200%) skewX(-30deg); }
+        }
+        .animate-logo-glimmer {
+          animation: luxuryGlimmer 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+          animation-delay: 0.8s;
+        }
+      `}</style>
+
       <div className="w-full max-w-[900px] flex flex-col items-center text-center">
-        {/* Logo */}
+        {/* Logo Container with Glimmer Effect */}
         <div className="mb-8 md:mb-14">
-          <img
-            src={imgLogo}
-            alt="Sapere Logo"
-            className="w-[140px] md:w-[230px] object-contain"
-          />
+          <div className="relative overflow-hidden inline-block group">
+            <img
+              src={imgLogo}
+              alt="Sapere Logo"
+              className="w-[140px] md:w-[230px] object-contain relative z-10"
+            />
+            {/* Shimmer Light Layer */}
+            <div
+              className="absolute top-0 left-0 h-full w-[60%] pointer-events-none z-20 animate-logo-glimmer"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%)",
+              }}
+            />
+          </div>
         </div>
 
         {/* Heading */}
         <h1
           className="text-[#f5f3eb] mb-12 md:mb-28 px-2 text-[18px] sm:text-[20px] md:text-[23.7px]"
           style={{
-            // fontFamily: "The Seasons",
             fontFamily: '"The Seasons", serif',
             lineHeight: "1.4",
             letterSpacing: "0.15em",
@@ -74,7 +96,6 @@ export default function App() {
 
         {/* FORM SECTION */}
         <div className="w-full max-w-[720px] px-2 md:px-0">
-          {/* Form wrapper with enhanced mobile fitting */}
           <div
             className="w-full flex flex-row items-center justify-between gap-2 md:gap-5 pb-2 md:pb-4"
             style={{ borderBottom: "1px solid rgba(245,243,235,0.7)" }}
@@ -104,9 +125,7 @@ export default function App() {
                 border: "none",
                 borderRadius: "999px",
                 cursor: "pointer",
-                // fontFamily: "The Seasons , Akzidenz-Grotesk",
                 fontFamily: "Akzidenz-Grotesk,The Seasons",
-                // fontWeight: 400,
                 letterSpacing: "0.22em",
                 whiteSpace: "nowrap",
               }}
@@ -149,7 +168,6 @@ export default function App() {
               style={{
                 color: "#f5f3eb",
                 fontFamily: '"Akzidenz-Grotesk", serif',
-
                 lineHeight: "1.7",
                 letterSpacing: "0.02em",
               }}
