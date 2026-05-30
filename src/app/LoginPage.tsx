@@ -49,37 +49,14 @@ export default function App() {
         backgroundColor: "#2e2a14",
       }}
     >
-      {/* Self-contained style block for the luxury glimmer effect */}
-      <style>{`
-        @keyframes luxuryGlimmer {
-          0% { transform: translateX(-200%) skewX(-30deg); }
-          15% { transform: translateX(200%) skewX(-30deg); }
-          100% { transform: translateX(200%) skewX(-30deg); }
-        }
-        .animate-logo-glimmer {
-          animation: luxuryGlimmer 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-          animation-delay: 0.8s;
-        }
-      `}</style>
-
       <div className="w-full max-w-[900px] flex flex-col items-center text-center">
-        {/* Logo Container with Glimmer Effect */}
+        {/* Clean Logo Container */}
         <div className="mb-8 md:mb-14">
-          <div className="relative overflow-hidden inline-block group">
-            <img
-              src={imgLogo}
-              alt="Sapere Logo"
-              className="w-[140px] md:w-[230px] object-contain relative z-10"
-            />
-            {/* Shimmer Light Layer */}
-            <div
-              className="absolute top-0 left-0 h-full w-[60%] pointer-events-none z-20 animate-logo-glimmer"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%)",
-              }}
-            />
-          </div>
+          <img
+            src={imgLogo}
+            alt="Sapere Logo"
+            className="w-[140px] md:w-[230px] object-contain"
+          />
         </div>
 
         {/* Heading */}
