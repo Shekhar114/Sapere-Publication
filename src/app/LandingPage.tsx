@@ -137,7 +137,8 @@ const LandingPage = ({ isLoggedIn }: LandingPageProps) => {
 const styles: Record<string, React.CSSProperties> = {
   container: {
     position: "relative",
-    minHeight: "100vh",
+    // minHeight: "100vh",
+    height: "100dvh",
     width: "100%",
     backgroundImage: `url(${bgImage})`,
     backgroundColor: "RGB(34, 31, 23,0.7)",
