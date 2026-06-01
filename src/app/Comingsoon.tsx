@@ -24,7 +24,7 @@ const Comingsoon: React.FC = () => {
           style={{
             // fontFamily: `"${theSeasons}"`,
             fontFamily: '"The Seasons", serif',
-            fontSize: "clamp(20px, 3.5vw, 36px)",
+            fontSize: "clamp(20px, 3.5vw, 20px)",
             lineHeight: "1.2",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
