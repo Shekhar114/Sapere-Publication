@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
+import imgLogo from "../../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
 import OurPillars from "./OurPillars";
-import bgImage from "../assets/zoeImages/bg.png";
+import bgImage from "../../assets/zoeImages/bg.png";
 
 interface LandingPageProps {
   isLoggedIn: boolean;

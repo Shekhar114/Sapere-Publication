@@ -1,5 +1,7 @@
 import { useState } from "react";
-import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
+// @ts-ignore
+import imgLogo from "../../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
+
 import LandingPage from "./LandingPage";
 
 const SCRIPT_URL =

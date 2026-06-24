@@ -1,6 +1,6 @@
 import React from "react";
-import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
-import theSeasons from "../assets/fonts/The Seasons/TheSeasons-Regular.ttf";
+import imgLogo from "../../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
+import theSeasons from "../../assets/fonts/The Seasons/TheSeasons-Regular.ttf";
 
 const Comingsoon: React.FC = () => {
   return (

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import SecureYourPlace from "../app/SecureYourPlace";
-import Comingsoon from "../app/Comingsoon";
+import SecureYourPlace from "./SecureYourPlace";
+import Comingsoon from "./Comingsoon";
 
-import Image1 from "../assets/zoeImages/image1.png";
-import Image3 from "../assets/zoeImages/image3.png";
-import Image5 from "../assets/zoeImages/image5.png";
-import Image7 from "../assets/zoeImages/image7.png";
+import Image1 from "../../assets/zoeImages/image1.png";
+import Image3 from "../../assets/zoeImages/image3.png";
+import Image5 from "../../assets/zoeImages/image5.png";
+import Image7 from "../../assets/zoeImages/image7.png";
 
-import theSeasons from "../assets/fonts/The Seasons/TheSeasons-Regular.ttf";
+import theSeasons from "../../assets/fonts/The Seasons/TheSeasons-Regular.ttf";
 
 interface PillarData {
   id: number;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import imgLogo from "../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
+import imgLogo from "../../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
 import Comingsoon from "./Comingsoon";
 
 const SCRIPT_URL =
@@ -89,8 +89,7 @@ export default function SecureYourPlace() {
               onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
               className="bg-transparent outline-none border-none text-left py-2 text-[#f4f2ea] flex-1 min-w-0 text-[14px] md:text-[17px]"
               style={{
-                fontFamily:
-                  "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
+                fontFamily: "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
                 letterSpacing: "0.02em",
                 WebkitTextFillColor: "#f4f2ea",
               }}
@@ -106,8 +105,7 @@ export default function SecureYourPlace() {
                 border: "none",
                 borderRadius: "999px",
                 cursor: "pointer",
-                fontFamily:
-                  "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
+                fontFamily: "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
                 fontWeight: "500",
                 letterSpacing: "0.08em",
                 whiteSpace: "nowrap",
@@ -123,8 +121,7 @@ export default function SecureYourPlace() {
               className="mt-3 text-left text-[12px] md:text-[13px]"
               style={{
                 color: "#ff6b6b",
-                fontFamily:
-                  "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
+                fontFamily: "'Akzidenz-Grotesk', 'Helvetica Neue', sans-serif",
               }}
             >
               {error}
