@@ -1,81 +1,107 @@
 import React from "react";
+import image1 from "../../../assets/PHASE3PICTURE/image16.png";
 
 const FeaturedArticle = () => {
   return (
     <section className="relative w-full overflow-hidden bg-[#302c0e] text-white">
-      <div className="relative mx-auto min-h-[835px] max-w-[1280px]">
-        {/* Left Image Placeholder Design */}
-        <div className="absolute left-[32px] top-[113px] hidden h-[608px] w-[393px] bg-[#e7e7e7] md:block" />
+      <div className="relative mx-auto min-h-[740px] w-full max-w-[1386px]">
+        {/* Desktop Layout */}
+        <div className="hidden lg:block">
+          {/* Cream Back Box */}
+          <div className="absolute left-[36px] top-[43px] h-[623px] w-[404px] bg-[#f6f4ea]" />
 
-        <div className="absolute left-[133px] top-[193px] hidden h-[440px] w-[511px] bg-[#c7c1c1] md:block" />
-
-        {/* Right Content */}
-        <div className="absolute left-[750px] top-[128px] hidden max-w-[430px] md:block">
-          <h2 className="font-['The_Seasons'] text-[61px]/[1.58px] font-normal uppercase leading-[1.5] tracking-[10px] text-white letter-spacing-[16px]">
-            Featured
-            <br />
-            Article
-          </h2>
-
-          <div className="mt-[28px]">
-            <h3 className="text-[20px]/[1.2] font-bold leading-tight">
-              The New Rules of Capital in Luxury
-            </h3>
-
-            <p className="mt-[24px] text-[20px]/[1.2] font-medium leading-[1.15]">
-              How early-stage founders are rethinking funding, valuation, and
-              investor relationships in a post-hype market. What smart capital
-              structures actually look like in 2026 and why traditional
-              approaches are failing many new brands.
-            </p>
+          {/* Main Image Box */}
+          <div className="absolute left-[46px] top-[120px] h-[470px] w-[624px] overflow-hidden">
+            <img src={image1} alt="Featured article" className="w-full" />
           </div>
 
-          <p className="mt-[100px] text-[20px]/[1.2] font-bold italic">
-            Read time: 12 min
-          </p>
+          {/* Right Content */}
+          <div className="absolute left-[742px] top-[118px] w-[590px]">
+            <h2
+              className="text-[62px] font-normal uppercase leading-[1.38] tracking-[0.2em] text-white"
+              style={{ fontFamily: "'The Seasons', serif" }}
+            >
+              FEATURED
+              <br />
+              ARTICLE
+            </h2>
 
+            <div className="mt-[74px]">
+              <h3 className="font-sans text-[16px] font-bold uppercase leading-[1.2] tracking-[0.11em] text-white">
+                THE NEW RULES OF CAPITAL IN LUXURY
+              </h3>
+
+              <p className="mt-[26px] max-w-[610px] font-sans text-[17px] font-normal leading-[1.35] tracking-[0.1em] text-white">
+                How early-stage founders are rethinking funding,
+                <br />
+                valuation, and investor relationships in a post-hype market.
+                <br />
+                What smart capital structures actually look like in 2026 and
+                <br />
+                why traditional approaches are failing many new brands.
+              </p>
+
+              <p className="mt-[26px] font-sans text-[17px] font-normal italic leading-[1.2] tracking-[0.06em] text-white">
+                Read time: 12 min
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
           <a
             href="#"
-            className="mt-[66px] inline-block text-[20px]/[1.2] font-bold underline underline-offset-[4px]"
+            className="absolute left-[780px] top-[617px] inline-flex items-center gap-[8px] font-sans text-[19px] font-normal uppercase leading-none tracking-[0.03em] text-white transition-opacity hover:opacity-70"
           >
-            Explore The Sapere Editorial System
+            <span className="text-[22px] leading-none">→</span>
+            Explore The Sapēre Editorial System
           </a>
         </div>
 
-        {/* Mobile Layout */}
-        <div className="flex min-h-screen flex-col px-6 py-16 md:hidden">
-          <h2 className="font-['The_Seasons'] text-[44px] font-normal uppercase leading-[1.25] tracking-[7px]">
-            Featured
+        {/* Mobile / Tablet Layout */}
+        <div className="flex min-h-screen flex-col px-6 py-14 lg:hidden">
+          <h2
+            className="text-[42px] font-normal uppercase leading-[1.25] tracking-[0.18em] text-white"
+            style={{ fontFamily: "'The Seasons', serif" }}
+          >
+            FEATURED
             <br />
-            Article
+            ARTICLE
           </h2>
 
-          <div className="relative mt-10 h-[360px] w-full">
-            <div className="absolute left-0 top-0 h-full w-[72%] bg-[#e7e7e7]" />
-            <div className="absolute left-[15%] top-[48px] h-[240px] w-[85%] bg-[#c7c1c1]" />
+          <div className="relative mt-10 h-[390px] w-full">
+            <div className="absolute left-0 top-0 h-full w-[75%] bg-[#f6f4ea]" />
+
+            <div className="absolute left-[4%] top-[70px] h-[250px] w-[96%] overflow-hidden">
+              <img
+                src={image1}
+                alt="Featured article"
+                className="h-full w-full scale-[1.04] object-cover object-[50%_42%]"
+              />
+            </div>
           </div>
 
           <div className="mt-10">
-            <h3 className="text-[20px] font-bold leading-tight">
-              The New Rules of Capital in Luxury
+            <h3 className="font-sans text-[17px] font-bold uppercase leading-[1.3] tracking-[0.1em]">
+              THE NEW RULES OF CAPITAL IN LUXURY
             </h3>
 
-            <p className="mt-5 text-[18px] leading-[1.25]">
+            <p className="mt-6 font-sans text-[17px] font-normal leading-[1.45] tracking-[0.05em]">
               How early-stage founders are rethinking funding, valuation, and
               investor relationships in a post-hype market. What smart capital
               structures actually look like in 2026 and why traditional
               approaches are failing many new brands.
             </p>
 
-            <p className="mt-10 text-[18px] font-bold italic">
+            <p className="mt-8 font-sans text-[17px] font-normal italic">
               Read time: 12 min
             </p>
 
             <a
               href="#"
-              className="mt-8 inline-block text-[18px] font-bold underline underline-offset-[4px]"
+              className="mt-10 inline-flex items-center gap-2 font-sans text-[17px] font-normal uppercase leading-[1.3] tracking-[0.03em] text-white"
             >
-              Explore The Sapere Editorial System
+              <span className="text-[22px] leading-none">→</span>
+              Explore The Sapēre Editorial System
             </a>
           </div>
         </div>

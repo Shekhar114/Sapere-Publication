@@ -1,9 +1,10 @@
 import React from "react";
-import Logo from "../../../assets/b3a4a46ae6ce743e601e5c2fda9dfb646639c587.png";
+
+import image1 from "../../../assets/PHASE3PICTURE/image33.png";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#666666] text-white">
+    <section className="relative min-h-screen w-full overflow-hidden bg-black text-white">
       {/* The Seasons Font */}
       <style>
         {`
@@ -17,37 +18,38 @@ const HeroSection: React.FC = () => {
         `}
       </style>
 
+      {/* Background Image */}
+      <img
+        src={image1}
+        alt="Hero Background"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/20" />
+
       {/* Top Navigation */}
       <header
-        className="absolute left-0 top-[78px] z-20 grid w-full grid-cols-3 items-center px-[50px]"
+        className="absolute left-1/2 top-[52px] z-20 grid w-full max-w-[990px] -translate-x-1/2 grid-cols-3 items-center"
         style={{ fontFamily: `"The Seasons", serif` }}
       >
-        <p className="text-left text-[16px] font-normal uppercase leading-none tracking-[0.22em]">
+        <p className="text-left text-[16px] font-normal uppercase leading-none tracking-[-0.02em]">
+          HOME
+        </p>
+
+        <p className="text-center text-[16px] font-normal uppercase leading-none tracking-[-0.02em]">
+          THE SAPÈRE MEMBERSHIP
+        </p>
+
+        <p className="text-right text-[16px] font-normal uppercase leading-none tracking-[-0.02em]">
           THE EDITORIAL SYSTEM
-        </p>
-
-        <p className="text-center text-[16px] font-normal uppercase leading-none tracking-[0.22em]">
-          THE SAPERE MEMBERSHIP
-        </p>
-
-        <p className="text-right text-[16px] font-normal uppercase leading-none tracking-[0.22em]">
-          ACCESS SAPERE
         </p>
       </header>
 
-      {/* Center Logo */}
-      <div className="absolute left-1/2 top-[188px] z-10 -translate-x-1/2">
-        <img
-          src={Logo}
-          alt="Logo"
-          className="h-[140px] w-[140px] object-contain opacity-35 grayscale"
-        />
-      </div>
-
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center pt-[118px] text-center">
+      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center text-center">
         <h1
-          className="text-[54px] font-normal uppercase leading-[1.78] tracking-[0.16em] md:text-[62px]"
+          className="mt-[58px] text-[54px] font-normal uppercase leading-[1.42] tracking-[0.02em] sm:text-[64px] md:text-[72px]"
           style={{ fontFamily: `"The Seasons", serif` }}
         >
           WELCOME TO
@@ -55,12 +57,12 @@ const HeroSection: React.FC = () => {
           PROFICIO
         </h1>
 
-        <button
-          className="mt-[42px] text-[20px] font-semibold uppercase leading-none tracking-[-0.03em]"
+        <p
+          className="mt-[38px] text-[16px] font-normal uppercase leading-none tracking-[0.52em]"
           style={{ fontFamily: `"Inter", sans-serif` }}
         >
-          ADVANCE
-        </button>
+          I ADVANCE
+        </p>
       </div>
     </section>
   );
