@@ -1,5 +1,6 @@
 import React from "react";
 import image1 from "../../../assets/PHASE3PICTURE/image30.png";
+import imageMobile from "../../../assets/PHASE3PICTURE/image30.png"; // apni mobile image path lagao
 
 const SapereConversations: React.FC = () => {
   return (
@@ -16,7 +17,97 @@ const SapereConversations: React.FC = () => {
         `}
       </style>
 
-      <div className="mx-auto grid min-h-[840px] w-full max-w-[1440px] grid-cols-1 px-6 py-12 lg:grid-cols-[584px_1fr] lg:gap-[55px] lg:px-[92px] lg:py-[74px]">
+      {/* ================= MOBILE VIEW ================= */}
+      <div className="block w-full px-6 py-10 lg:hidden">
+        {/* Image */}
+        <div className="relative h-[390px] w-full overflow-hidden">
+          <img
+            src={imageMobile}
+            alt="The Sapēre Conversations"
+            className="h-full w-full object-cover"
+          />
+
+          {/* Image Overlay Text */}
+          <div
+            className="absolute left-1/2 top-[36%] w-full -translate-x-1/2 px-4 text-center text-white"
+            style={{ fontFamily: `"The Seasons", serif` }}
+          >
+            <p className="text-[11px] font-normal uppercase tracking-[0.28em]">
+              The Sapere Conversations
+            </p>
+
+            <h3 className="mt-[6px] text-[26px] font-normal uppercase leading-[1.15] tracking-[0.1em]">
+              A Founders Path
+            </h3>
+
+            <p
+              className="mt-[6px] text-[9px] font-normal normal-case tracking-[0.04em] text-white/85"
+              style={{ fontFamily: `"Inter", sans-serif` }}
+            >
+              The First Episode of the Sapère Conversations
+            </p>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="mt-8 w-full">
+          <h2
+            className="text-center text-[34px] font-normal uppercase leading-[1.25] tracking-[0.1em] text-[#0d3a12]"
+            style={{ fontFamily: `"The Seasons", serif` }}
+          >
+            THE SAPĒRE
+            <br />
+            CONVERSATIONS
+          </h2>
+
+          <div
+            className="mt-6 text-[#111111]"
+            style={{ fontFamily: `"Courier New", monospace` }}
+          >
+            <p className="text-[14px] font-bold uppercase leading-[1.4] tracking-[0.08em]">
+              Episode: “The Quiet Power of Positioning”
+            </p>
+
+            <p className="mt-4 text-[14px] font-normal leading-[1.45] tracking-[0.01em]">
+              With: Elena Moreau — Founder &amp; Creative Director, Atelier No.
+              7
+            </p>
+
+            <p className="mt-4 text-[14px] font-normal leading-[1.45] tracking-[0.01em]">
+              Moderated by: <span className="font-bold">Shahzad Haider</span>
+            </p>
+
+            <p className="mt-4 text-[14px] font-normal leading-[1.5] tracking-[0.01em]">
+              In this conversation, we explore why positioning is often
+              misunderstood in luxury, how strong brands create clarity without
+              chasing attention, and why long-term perception matters more than
+              short-term visibility.
+            </p>
+
+            <p className="mt-5 text-[13px] font-bold leading-[1.4] tracking-[0.02em]">
+              Duration: 47 minutes
+            </p>
+          </div>
+
+          {/* Buttons */}
+          <div className="mt-6 flex flex-col items-center gap-4">
+            <button className="h-[46px] w-full max-w-[300px] rounded-full bg-[#302904] text-[16px] font-normal uppercase tracking-[0.01em] text-white transition hover:bg-[#453b08]">
+              Play Episode
+            </button>
+
+            <a
+              href="#"
+              className="flex items-center text-[14px] font-bold uppercase tracking-[0.02em] text-[#111111] underline underline-offset-2"
+              style={{ fontFamily: `"Arial", sans-serif` }}
+            >
+              Explore All Episodes
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ================= DESKTOP VIEW - UNCHANGED ================= */}
+      <div className="mx-auto hidden min-h-[840px] w-full max-w-[1440px] grid-cols-1 px-6 py-12 lg:grid lg:grid-cols-[584px_1fr] lg:gap-[55px] lg:px-[92px] lg:py-[74px]">
         {/* Left Image */}
         <div className="relative h-[500px] w-full overflow-hidden lg:h-[708px] lg:w-[584px]">
           <img

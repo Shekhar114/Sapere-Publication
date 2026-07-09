@@ -1,9 +1,9 @@
 import React from "react";
+import image1 from "../../../assets/PHASE3PICTURE/image18.png";
 
 const EditorialFeatureSection: React.FC = () => {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-black">
-      {/* Font */}
+    <section className="relative w-full overflow-hidden bg-[#fbfaf0] text-[#30280b]">
       <style>
         {`
           @font-face {
@@ -16,46 +16,90 @@ const EditorialFeatureSection: React.FC = () => {
         `}
       </style>
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[1215px] items-center">
-        {/* Left Image / Placeholder */}
-        <div className="absolute left-0 top-[167px] h-[500px] w-[602px] bg-[#c7c2c2]" />
-
-        {/* Right Content */}
-        <div className="ml-auto flex w-full max-w-[600px] flex-col pr-[102px]">
+      {/* MOBILE VIEW */}
+      <div className="flex flex-col md:hidden w-full">
+        <div className="w-full h-[500px] overflow-hidden bg-black">
+          <img
+            src={image1}
+            alt="Editorial Feature"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="px-6 py-10 flex flex-col items-center text-center">
           <h2
-            className="mb-[43px] text-center text-[40px] font-normal uppercase leading-[1.6] tracking-[0.22em] text-[#30280b]"
+            className="mb-8 text-[32px] font-normal uppercase tracking-[0.2em]"
             style={{ fontFamily: `"The Seasons", serif` }}
           >
             EDITORIAL
             <br />
             FEATURE
           </h2>
-
           <div
-            className="max-w-[565px] text-[20px] font-bold leading-[1.18] text-[#30280b]"
+            className="text-[16px] font-bold leading-[1.6] space-y-6"
             style={{ fontFamily: `"Inter", Arial, sans-serif` }}
           >
-            <p className="mb-[25px]">
-              Your story. Your perspective. Your voice, amplified.
-            </p>
-
-            <p className="mb-[25px]">
-              Twice a year, selected Ēminēō members are featured in Sapēre's
+            <p>Your story. Your perspective. Your voice, amplified.</p>
+            <p>
+              Twice a year, selected Ēminēō members are featured in Sapēre’s
               publication through carefully curated profiles, in-depth
               conversations, and dedicated business coverage.
             </p>
+            <div>
+              <p className="uppercase mb-2">How to Apply</p>
+              <p>
+                If you believe your story or perspective would add value to the
+                Sapēre ecosystem, you can submit a proposal.
+              </p>
+            </div>
+            <p>
+              Our editorial team will review it personally and get back to you.
+            </p>
+          </div>
+          <button className="mt-10 h-[50px] w-full max-w-[340px] rounded-[6px] bg-[#3a300d] text-[13px] font-medium uppercase text-white">
+            Submit Editorial Proposal
+          </button>
+        </div>
+      </div>
 
-            <p className="mb-[25px]">
-              <span className="block">How to Apply</span>
+      {/* DESKTOP VIEW (Unchanged) */}
+      <div className="hidden md:block relative mx-auto min-h-[550px] w-full max-w-[1152px]">
+        <div className="absolute left-0 top-0 h-[455px] w-[545px] overflow-hidden bg-black">
+          <img
+            src={image1}
+            alt="Editorial Feature"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="absolute left-[582px] top-[7px] w-[548px]">
+          <h2
+            className="mb-[34px] text-center text-[34px] font-normal uppercase leading-[1.7] tracking-[0.24em] text-[#30280b]"
+            style={{ fontFamily: `"The Seasons", serif` }}
+          >
+            EDITORIAL
+            <br />
+            FEATURE
+          </h2>
+          <div
+            className="text-[20px] font-bold leading-[1.12] text-[#30280b]"
+            style={{ fontFamily: `"Inter", Arial, sans-serif` }}
+          >
+            <p className="mb-[24px]">
+              Your story. Your perspective. Your voice, amplified.
+            </p>
+            <p className="mb-[24px] max-w-[530px]">
+              Twice a year, selected Ēminēō members are featured in Sapēre’s
+              publication through carefully curated profiles, in-depth
+              conversations, and dedicated business coverage.
+            </p>
+            <p className="mb-[24px] max-w-[540px]">
+              <span className="block uppercase">HOW TO APPLY</span>
               If you believe your story or perspective would add value to the
               Sapēre ecosystem, you can submit a proposal.
             </p>
-
-            <p className="mb-[33px]">
+            <p className="mb-[29px] max-w-[545px]">
               Our editorial team will review it personally and get back to you.
             </p>
-
-            <button className="ml-[105px] h-[51px] w-[392px] rounded-[11px] bg-[#3a300d] text-[16px] font-medium uppercase text-white transition hover:bg-[#4a3d12]">
+            <button className="ml-[93px] h-[47px] w-[354px] rounded-[11px] bg-[#3a300d] text-[14px] font-medium uppercase text-white transition hover:bg-[#4a3d12] ">
               Submit Editorial Proposal
             </button>
           </div>

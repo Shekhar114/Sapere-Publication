@@ -1,9 +1,9 @@
 import React from "react";
+import image1 from "../../../assets/PHASE3PICTURE/image19.png";
 
 const CoCreationSection: React.FC = () => {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-black text-[#302b12]">
-      {/* Font */}
+    <section className="relative w-full overflow-hidden bg-[#fbfaf0] text-[#302b12]">
       <style>
         {`
           @font-face {
@@ -16,12 +16,25 @@ const CoCreationSection: React.FC = () => {
         `}
       </style>
 
-      <div className="mx-auto flex min-h-screen w-full max-w-[1280px] items-center justify-center px-4 py-16 lg:px-0 lg:py-0">
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[600px_2px_537px] lg:gap-[54px]">
+      <div className="mx-auto flex w-full max-w-[1123px] flex-col items-center px-6 py-12 lg:min-h-[665px] lg:flex-row lg:px-0 lg:py-0">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[590px_2px_496px] lg:gap-[31px]">
+          {/* Mobile-first layout: Image on top, Content on bottom */}
+          {/* Right Image (appears first on mobile due to flex-col-reverse/order) */}
+          <div className="order-1 flex w-full justify-center lg:order-3 lg:justify-start">
+            <img
+              src={image1}
+              alt="Co creation opportunity"
+              className="h-[400px] w-full max-w-[496px] object-cover md:h-[416px]"
+            />
+          </div>
+
+          {/* Center Divider */}
+          <div className="hidden h-[558px] w-[2px] bg-[#302b12] lg:order-2 lg:block" />
+
           {/* Left Content */}
-          <div className="flex w-full flex-col items-center text-center">
+          <div className="order-3 flex w-full flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
             <h2
-              className="mb-[42px] text-[34px] font-normal uppercase leading-[1.85] tracking-[0.26em] md:text-[38px]"
+              className="mb-8 text-[32px] font-normal uppercase leading-[1.2] tracking-[0.1em] text-[#171407] md:text-[38px]"
               style={{ fontFamily: `"The Seasons", Georgia, serif` }}
             >
               CO CREATION
@@ -30,39 +43,31 @@ const CoCreationSection: React.FC = () => {
             </h2>
 
             <div
-              className="max-w-[585px] text-[20px] font-bold leading-[1.18] tracking-[-0.04em]"
+              className="max-w-[560px] text-[16px] leading-[1.6] tracking-normal text-[#302b12] md:text-[18px]"
               style={{ fontFamily: `"Arial", sans-serif` }}
             >
-              <p className="mb-[24px]">
+              <p className="mb-6">
                 Sapēre is built with its members, not simply for them.
               </p>
 
-              <p className="mb-[24px]">
+              <p className="mb-6">
                 Whether you have an idea, project, partnership opportunity,
                 article concept, event proposal, or unique perspective, we
                 welcome submissions that could contribute to the ecosystem.
               </p>
 
-              <p>
+              <p className="mb-8">
                 Our team reviews each proposal and may invite selected members
                 to collaborate on future initiatives.
               </p>
             </div>
 
             <button
-              className="mt-[32px] h-[52px] w-full max-w-[600px] rounded-[10px] bg-[#302b12] text-[16px] font-normal uppercase tracking-[-0.02em] text-white transition hover:bg-[#433c18]"
+              className="h-[52px] w-full max-w-[340px] rounded-[6px] bg-[#302b12] text-[13px] font-normal uppercase tracking-[0.1em] text-white transition hover:bg-[#433c18]"
               style={{ fontFamily: `"Arial", sans-serif` }}
             >
-              SUBMIT A&nbsp; CO-CREATION PROPOSAL
+              SUBMIT A CO-CREATION PROPOSAL
             </button>
-          </div>
-
-          {/* Center Divider */}
-          <div className="hidden h-[619px] w-[2px] bg-[#302b12] lg:block" />
-
-          {/* Right Image Box */}
-          <div className="flex w-full justify-center lg:justify-start">
-            <div className="h-[320px] w-full max-w-[537px] bg-[#c7c1c1] md:h-[460px]" />
           </div>
         </div>
       </div>

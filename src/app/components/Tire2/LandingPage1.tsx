@@ -6,7 +6,7 @@ import FoundersEveningsSection from "./FoundersEveningsSection";
 import HeroSection from "./HeroSection";
 
 import SapereConversations from "./SapereConversations";
-import WelcomeSection from "./WelcomeSection";
+import WelcomeSection from "../Tire1/WelcomeSection";
 import WorkshopAccess from "./WorkShopAccess";
 
 function LandingPage1() {

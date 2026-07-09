@@ -1,8 +1,8 @@
 import Footer from "../Footer";
+import OfficeHoursSection from "../Tire1/OfficeHoursSection";
 import SapereNetworkSection from "../Tire1/SapereNetworkSection";
 import CouncilRecordingSection from "../Tire2/CouncilRecordingSection";
 import FoundersEveningsSection from "../Tire2/FoundersEveningsSection";
-import OfficeHoursSection from "../Tire2/OfficeHoursSection";
 import SapereConversations from "../Tire2/SapereConversations";
 import WorkshopAccess from "../Tire2/WorkShopAccess";
 import HeroSection from "../Tire3/HeroSection";
@@ -14,33 +14,29 @@ import ConciergeNetwork from "./ConciergeNetwork";
 import EditorialFeatureSection from "./EditorialFeatureSection";
 import SummitSection from "./SummitSection";
 import SummitsSection from "./SummitsSection";
-import WelcomeSection from "./WelcomeSection";
+import WelcomeSection from "../Tire1/WelcomeSection";
 
-function LandingPage3(){
-
-    return(
-        <>
-            <HeroSection  />
-            <WelcomeSection />
-            <InnerCircleSection />
-            <TalentIncubatorSection />
-            <CoCreationSection  />
-            <EditorialFeatureSection   />
-            <ConciergeNetwork   />
-            <SapereConversations />
-            <WorkshopAccess />
-            <SapereNetworkSection />
-            <CouncilRecordingSection />
-            <LiveSessionsSection />
-            <FoundersEveningsSection />
-            <SummitsSection />
-            <SummitSection />
-            <OfficeHoursSection />
-            <Footer />
-
-            
-
-        </>
-    );
+function LandingPage3() {
+  return (
+    <>
+      <HeroSection />
+      <WelcomeSection />
+      <InnerCircleSection />
+      <TalentIncubatorSection />
+      <CoCreationSection />
+      <EditorialFeatureSection />
+      <ConciergeNetwork />
+      <SapereConversations />
+      <WorkshopAccess />
+      <SapereNetworkSection />
+      <CouncilRecordingSection />
+      <LiveSessionsSection />
+      <FoundersEveningsSection />
+      {/* <SummitsSection /> */}
+      <SummitSection />
+      <OfficeHoursSection />
+      <Footer />
+    </>
+  );
 }
 export default LandingPage3;

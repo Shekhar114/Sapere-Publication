@@ -7,6 +7,7 @@ import FeaturedArticle from "./FeaturedArticle";
 import UpcomingEvents from "./UpcomingEvents";
 import OfficeHoursSection from "./OfficeHoursSection";
 import Footer from "../Footer";
+import RoundtableSection from "./RoundtableSection";
 const LandingPage = () => {
   return (
     <>
@@ -15,6 +16,7 @@ const LandingPage = () => {
       <AccessLibrarySection />
       <SapereNetworkSection />
       <FeaturedArticle />
+      <RoundtableSection />
       <UpcomingEvents />
       <OfficeHoursSection />
       <Footer />
